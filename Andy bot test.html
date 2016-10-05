@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Andy bot proto</title>
+		<script src="AI.js"></script>
+		<!--script src="jquery-2.2.4.js"></script><!---->
+		<!--script src="jquery-ui/jquery-ui.js"></script><!---->
+		<!--link href="jquery-ui/jquery-ui.css" rel="stylesheet">
+		<link src="jquery-ui/jquery-ui.structure.css">
+		<link src="jquery-ui/jquery-ui.theme.css"><!---->
+		
+		<script src="http://code.jquery.com/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.js"></script>
+		<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/base/jquery-ui.css" rel="stylesheet"><!---->
+		<!--link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12/i18n/jquery-ui-i18n.min.js" rel="stylesheet"><!---->
+		<link id="theme" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/ui-lightness/jquery-ui.css" rel="stylesheet"><!---->
+		<!--link href="http://cdn.wijmo.com/jquery.wijmo-pro.all.3.20133.29.min.css" rel="stylesheet"><!---->
+		<style>
+		/*.ui-widget-overlay {
+			position: absolute;
+		}
+		.ui-tooltip-content{
+			font-size:.8em;
+		}*/
+		.userText{
+			padding:0 0.5em;
+			margin-top:0px;
+			color:white;
+			float:right;
+			/*border:4px outset blue;*/
+			background-color:blue;
+		}
+		.userName{
+			padding:0 0.5em;
+			margin-top:0px;
+			float:right;
+		}
+		.aiText{
+			display: inline;
+			padding:0 0.5em;
+			margin-top:0px;
+			color:white;
+			float:left;
+			/*border:4px outset gray;*/
+			background-color:gray;
+			display: inline;
+		}
+		.aiName{
+			display: inline;
+			height: 1em;
+			padding:0 0.5em;
+			margin-top:0px;
+			float:left;
+		}
+		footer{
+			opacity:0.9;
+			font-size:0.75em;
+			position:absolute;
+			left:0px;
+			bottom:0px;
+			width:100%;
+			width:calc(100% - 4em);
+			background-color:#aaa;
+			margin-top:2em;
+			padding-top: 1em;
+			padding-bottom:1em;
+			padding-left:2em;
+			padding-right:2em;
+		}
+		#output{
+			padding:0px; 
+			border:1px solid gray; 
+			background-color:white;opacity: 0.8;
+			margin-left:10px;
+			margin-top:10px;
+			width:75%;
+			max-height:20em;
+		}
+		.group input[type=file]{
+			opacity:0;
+		}
+		</style>
+	</head>
+	<body class="ui-widget">
+		<div id="output" title="Text output will appear here">
+			<p style="text-align:center; font-size: 0.6em; color:gray">No older data found</p><!---->
+			<table style="margin:0px; width: 100%;">
+				<tbody>
+				</tbody>
+			</table>
+		</div>
+		<input spellcheck="false" title="Input comment here" id="input" autofocus>
+		<button id="enter" class="ui-state-default">
+		<span class="ui-button-text ui-button-text-only">Enter</span>
+		</button><br/>
+		<!--div class="group" data-purpose="Lets you select which AI bot to interact with.">
+			<select class="currentAI">
+			</select>
+		</div><br/><!---->
+		<div style="position:absolute; bottom:0px; z-index:-999;" data-purpose="Lets you select how the webpage should look">
+			<div class="group" data-purpose="Let the user change how the webpage looks.">
+				<p>
+					Don't like how the site looks? Feel free to change the theme below!<br/>
+				</p>
+				<select class="theme-select" title="Change theme">
+					<option>base</option>
+					<option>black tie</option>
+					<option>blitzer</option>
+					<option>cupertino</option>
+					<option>dark hive</option>
+					<option>dot luv</option>
+					<option>eggplant</option>
+					<option>excite bike</option>
+					<option>flick</option>
+					<option>hot sneaks</option>
+					<option>humanity</option>
+					<option>le frog</option>
+					<option>mint choc</option>
+					<option>overcast</option>
+					<option>pepper grinder</option>
+					<option>redmond</option>
+					<option>smoothness</option>
+					<option>south street</option>
+					<option>start</option>
+					<option>sunny</option>
+					<option>swanky purse</option>
+					<option>trontastic</option>
+					<option>ui darkness</option>
+					<option selected>ui lightness</option>
+					<option>vader</option>
+				</select>
+				<input id="white" type="radio" name="background-color" checked="checked"/>
+				<label for="white" title="Change background color">Light</label>
+				<input id="black" type="radio" name="background-color"/>
+				<label for="black" title="Change background color">Dark</label>
+			</div><br/>
+			<p style="font-size:0.7em">
+				For more information on these themes, go 
+				<a target="_blank" href="https://jqueryui.com/themeroller/">here</a>.
+			</p>
+		</div>
+		<!--div class="group" data-purpose="Allow the bot to learn untill it correctly connects input to rewards and/or punishments.">
+			<button class="neg" title="Ethically this button is unesesary">Punish</button>
+			<button class="pos">Reward</button>
+			<button class="min-tool" title="Minimize or Maximize tooltip"><span class="ui-icon ui-icon-circle-minus"></span></button>
+			<button class="x-tool" title="Remove tooltip"><span class="ui-icon ui-icon-circle-close"></span></button>
+		</div-->
+		<div id="aiStart" style="display:none" title="Welcome">
+			<p>Please fill out the following form.</p>
+			<button><input id="aiFile" type="file"></button>
+			
+		</div>
+		<script>
+			var themes={
+				/* extra styles
+				"delta":"http://kiandra.github.io/Delta-jQuery-UI-Theme/theme/jquery-ui.css",
+				"aristo":"http://taitems.github.io/Aristo-jQuery-UI-Theme/css/Aristo/Aristo.css",
+				"artic":"http://cdn.wijmo.com/themes/arctic/jquery-wijmo.css",/* *///theme from http://wijmo.com/theming/
+				/*jquery-ui styles*/
+				"base":"http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/base/jquery-ui.css",
+				"black tie":"http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/black-tie/jquery-ui.css",
+				"blitzer":"http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/blitzer/jquery-ui.css",
+				"cupertino":"http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/cupertino/jquery-ui.css",
+				"dark hive":"http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/dark-hive/jquery-ui.css",
+				"dot luv":"http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/dot-luv/jquery-ui.css",
+				"eggplant":"http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/eggplant/jquery-ui.css",
+				"excite bike":"http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/excite-bike/jquery-ui.css",
+				"flick":"http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/flick/jquery-ui.css",
+				"hot sneaks":"http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/hot-sneaks/jquery-ui.css",
+				"humanity":"http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/humanity/jquery-ui.css",
+				"le frog":"http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/le-frog/jquery-ui.css",
+				"mint choc":"http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/mint-choc/jquery-ui.css",
+				"overcast":"http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/overcast/jquery-ui.css",
+				"pepper grinder":"http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/pepper-grinder/jquery-ui.css",
+				"redmond":"http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/redmond/jquery-ui.css",
+				"smoothness":"http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/smoothness/jquery-ui.css",
+				"south street":"http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/south-street/jquery-ui.css",
+				"start":"http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/start/jquery-ui.css",
+				"sunny":"http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/sunny/jquery-ui.css",
+				"swanky purse":"http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/swanky-purse/jquery-ui.css",
+				"trontastic":"http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/trontastic/jquery-ui.css",
+				"ui darkness":"http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/ui-darkness/jquery-ui.css",
+				"ui lightness":"http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/ui-lightness/jquery-ui.css",
+				"vader":"http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/vader/jquery-ui.css",
+			}
+			function download(filename, text) {
+				var element = document.createElement('a');
+				element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+				element.setAttribute('download', filename);
+
+				element.style.display = 'none';
+				document.body.appendChild(element);
+
+				element.click();
+
+				document.body.removeChild(element);
+			}
+			var enteredCmds=[],
+			aiFunctions={},
+			userFunctions={},
+			currentAI="",
+			usersName="";
+			localStorage.usersName=usersName;
+			userFunctions.say=function(text) {
+				text=text.replace(/</g,"&lt;").replace(/>/g,"&gt;");
+				$("#output").css({"overflow":"scroll","overflow-x":"hidden"}).find("tbody").append("<tr style='min-height:1em'><td></td><td style='float:right'><p class='userText ui-corner-left ui-corner-top'>"+text+"</p><td/><td style='vertical-align: bottom;'><p class='userName'>"+usersName+"</p></td></tr>");
+				$("#output").animate({ scrollTop: $('#output').find("tbody").last().height()}, 2000);
+				//$(window).animate({scrollTop:$('#output').position()./*bottom*/top},2000);
+			};
+			aiFunctions.say=function(text) {
+				text=text.replace(/</g,"&lt;").replace(/>/g,"&gt;");
+				$("#output").css({"overflow":"scroll","overflow-x":"hidden"}).find("tbody").append("<tr style='min-height:1em'><td style='vertical-align: bottom;'><p class='aiName'>"+currentAI+"</p></td><td style='float:left'><p class='aiText ui-corner-right ui-corner-top'>"+text+"</p><td/><td></td></tr>");
+				$("#output").animate({ scrollTop: $('#output').find("tbody").last().height()}, 2000);
+			};
+			var ais={};
+			$(function() {
+				$(":button").button();
+				//$("body").tooltip();
+				$(".theme-select").selectmenu({
+					change: function() {
+						localStorage.style=$(this).val();
+						$("#theme").prop('disabled',true).prop('href',themes[$(this).val()]).prop('disabled',false);//change theme
+						//$("body").css("font-family",$(":button").css("font-family"));
+					},
+				});
+				if (!localStorage.style) {
+					localStorage.style="ui-lightness";
+				}else{
+					$(".theme-select").val(localStorage.style);
+					$("#theme").prop('disabled',true).prop('href',themes[$(".theme-select").val()]).prop('disabled',false);//change theme
+					$(".theme-select").selectmenu("refresh");
+				}
+				$(":file").css("margin","0px").parent().css("padding","0px").find(":file").addClass("ui-button").before('<div style="position:absolute; margin-bottom:0px; cursor: pointer; margin-top:0.5em" class="">Choose file (No file chosen)</div>').css({opacity:0}).change(function() {
+					$(this).prev().text("Choose file ("+($(this).val().substring($(this).val().lastIndexOf("\\")+1)||"No file chosen")+")");
+				});
+				/*$(".ui-selectmenu-button").click(function() {
+					$("body").animate({
+						scrollTop:"+=100px",
+					},1000);
+				});//make webpage scroll to show the opened list*/
+				$("#white,#black").click(function() {
+					localStorage.background=$(this).attr("id");
+					$("body,#output").css({"background-color":$(this).attr("id"),"color":($(this).attr("id")!="white"?"white":"black")});
+				});
+				if (!localStorage.background) {
+					localStorage.background="white";
+				}else{
+					$("#"+localStorage.background).attr("checked",true).click().parent()//.controlgroup("refresh");
+				}
+				//currentAI=prompt()||"New AI";
+				/*$("#aiStart").dialog({
+					autoOpen:false,
+				});*/
+				//usersName=localStorage.usersName||prompt("Please enter your name below, or press \"Cancel\" to log in as a guest.")||"Guest";
+				localStorage.usersName=usersName;
+				$(".group").append('<button class="min-tool" title="Minimize or Maximize tooltip"><span class="ui-icon ui-icon-circle-minus"></span></button><button class="x-tool" title="Remove tooltip"><span class="ui-icon ui-icon-circle-close"></span></button>').controlgroup();
+				$(".min-tool").bind("click",function() {
+					$(this).parent().find(".min-tool").toggleClass("ui-corner-all",900)//soften (or harden) edges
+					.siblings().not(".min-tool,select")//find all siblings exclding myself or tools with the same class or things that need to stay hidden
+					.toggle(900);//and toggle their visibility with an animation
+				});
+				$(".x-tool").bind("click",function() {
+					if (!(confirm("Are you sure you want to remove this widget?\n\nWidget purpose: "+$(this).parent().data("purpose")))) return;
+					$(this).parent().hide();
+				});
+				//var input=$("#input").autocomplete({source:enteredCmds});
+				var output=$("#output");
+				var enter=$("#enter");
+				$("#enter").click(function() {
+					//enteredCmds.push($("#input").val());
+					if ($("#input").val()!="") {
+						$("#input").val($("#input").val().replace(/"/g,"\\\""));
+						$("#output").attr("title","");
+						enteredCmds.push($("#input").val());
+						customParse("say(\""+$("#input").val()+"\");",userFunctions);
+						ais[currentAI].reactTo("say(\""+$("#input").val()+"\");");
+						customParse("say(\"(fake)"+$("#input").val()+"\");",aiFunctions);
+					}
+					$("#input").val("");
+				});
+				$("#input").bind("keypress",function(event) {
+					if (event.keyCode==13) $("#enter").click();
+				});
+			});
+		</script>
+	</body>
+</html>
