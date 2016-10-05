@@ -180,9 +180,10 @@
 					minWidth:600,
 					modal:true,
 					buttons:{
-						"Start talking":function() {
-							if ($(this).find(".tabs").data("selected.tabs")=="Make a new bot") {
-								usersName=$("#new-ai-name").val();
+						"Start talking":function(e,ui) {
+							if (ui.index==1) {
+								currentAI=$("#new-ai-name").val();
+								ais[currentAI]=new AI($("#new-ai-name").val());
 							}
 							$(this).dialog("close");
 						},
