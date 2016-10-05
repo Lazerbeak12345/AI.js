@@ -183,7 +183,7 @@
 						"Start talking":function(e,ui) {
 							if ($(this).find(".ui-tabs-panel:not(.ui-tabs-hide)").index()==1) {
 								currentAI=$("#new-ai-name").val();
-								ais[currentAI]=new AI($("#new-ai-name").val());
+								ais[currentAI]=new Ai($("#new-ai-name").val());
 							}
 							$(this).dialog("close");
 						},
