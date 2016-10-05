@@ -10,19 +10,13 @@
 		<link src="jquery-ui/jquery-ui.structure.css">
 		<link src="jquery-ui/jquery-ui.theme.css"><!---->
 		
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/jquery-ui.js"></script>
 		<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/base/jquery-ui.css" rel="stylesheet"><!---->
 		<!--link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12/i18n/jquery-ui-i18n.min.js" rel="stylesheet"><!---->
 		<link id="theme" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.0/themes/ui-lightness/jquery-ui.css" rel="stylesheet"><!---->
 		<!--link href="http://cdn.wijmo.com/jquery.wijmo-pro.all.3.20133.29.min.css" rel="stylesheet"><!---->
 		<style>
-		/*.ui-widget-overlay {
-			position: absolute;
-		}
-		.ui-tooltip-content{
-			font-size:.8em;
-		}*/
 		.userText{
 			padding:0 0.5em;
 			margin-top:0px;
@@ -53,21 +47,6 @@
 			margin-top:0px;
 			float:left;
 		}
-		footer{
-			opacity:0.9;
-			font-size:0.75em;
-			position:absolute;
-			left:0px;
-			bottom:0px;
-			width:100%;
-			width:calc(100% - 4em);
-			background-color:#aaa;
-			margin-top:2em;
-			padding-top: 1em;
-			padding-bottom:1em;
-			padding-left:2em;
-			padding-right:2em;
-		}
 		#output{
 			padding:0px; 
 			border:1px solid gray; 
@@ -76,9 +55,6 @@
 			margin-top:10px;
 			width:75%;
 			max-height:20em;
-		}
-		.group input[type=file]{
-			opacity:0;
 		}
 		</style>
 	</head>
@@ -94,10 +70,6 @@
 		<button id="enter" class="ui-state-default">
 		<span class="ui-button-text ui-button-text-only">Enter</span>
 		</button><br/>
-		<!--div class="group" data-purpose="Lets you select which AI bot to interact with.">
-			<select class="currentAI">
-			</select>
-		</div><br/><!---->
 		<div style="position:absolute; bottom:0px; z-index:-999;" data-purpose="Lets you select how the webpage should look">
 			<div class="group" data-purpose="Let the user change how the webpage looks.">
 				<p>
@@ -140,14 +112,8 @@
 				<a target="_blank" href="https://jqueryui.com/themeroller/">here</a>.
 			</p>
 		</div>
-		<!--div class="group" data-purpose="Allow the bot to learn untill it correctly connects input to rewards and/or punishments.">
-			<button class="neg" title="Ethically this button is unesesary">Punish</button>
-			<button class="pos">Reward</button>
-			<button class="min-tool" title="Minimize or Maximize tooltip"><span class="ui-icon ui-icon-circle-minus"></span></button>
-			<button class="x-tool" title="Remove tooltip"><span class="ui-icon ui-icon-circle-close"></span></button>
-		</div-->
 		<div id="aiStart" style="display:none" title="Welcome">
-			<p>Please fill out the following form.</p>
+			<p>Please choose your ai file, or create a new </p>
 			<button><input id="aiFile" type="file"></button>
 			
 		</div>
@@ -201,7 +167,6 @@
 			userFunctions={},
 			currentAI="",
 			usersName="";
-			localStorage.usersName=usersName;
 			userFunctions.say=function(text) {
 				text=text.replace(/</g,"&lt;").replace(/>/g,"&gt;");
 				$("#output").css({"overflow":"scroll","overflow-x":"hidden"}).find("tbody").append("<tr style='min-height:1em'><td></td><td style='float:right'><p class='userText ui-corner-left ui-corner-top'>"+text+"</p><td/><td style='vertical-align: bottom;'><p class='userName'>"+usersName+"</p></td></tr>");
@@ -234,7 +199,7 @@
 				$(":file").css("margin","0px").parent().css("padding","0px").find(":file").addClass("ui-button").before('<div style="position:absolute; margin-bottom:0px; cursor: pointer; margin-top:0.5em" class="">Choose file (No file chosen)</div>').css({opacity:0}).change(function() {
 					$(this).prev().text("Choose file ("+($(this).val().substring($(this).val().lastIndexOf("\\")+1)||"No file chosen")+")");
 				});
-				/*$(".ui-selectmenu-button").click(function() {
+				$(".ui-selectmenu-button").click(function() {
 					$("body").animate({
 						scrollTop:"+=100px",
 					},1000);
@@ -248,12 +213,9 @@
 				}else{
 					$("#"+localStorage.background).attr("checked",true).click().parent()//.controlgroup("refresh");
 				}
-				//currentAI=prompt()||"New AI";
-				/*$("#aiStart").dialog({
+				$("#aiStart").dialog({
 					autoOpen:false,
-				});*/
-				//usersName=localStorage.usersName||prompt("Please enter your name below, or press \"Cancel\" to log in as a guest.")||"Guest";
-				localStorage.usersName=usersName;
+				});
 				$(".group").append('<button class="min-tool" title="Minimize or Maximize tooltip"><span class="ui-icon ui-icon-circle-minus"></span></button><button class="x-tool" title="Remove tooltip"><span class="ui-icon ui-icon-circle-close"></span></button>').controlgroup();
 				$(".min-tool").bind("click",function() {
 					$(this).parent().find(".min-tool").toggleClass("ui-corner-all",900)//soften (or harden) edges
