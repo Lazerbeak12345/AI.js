@@ -180,12 +180,15 @@
 					minWidth:600,
 					modal:true,
 					buttons:{
-						"Start talking":function(e,ui) {
+						"Start talking":function() {
 							if ($(this).find(".ui-tabs-panel:not(.ui-tabs-hide)").index()==1) {
 								currentAI=$("#new-ai-name").val();
 								ais[currentAI]=new Ai($("#new-ai-name").val());
 							}
 							$(this).dialog("close");
+						},
+						"Llama":function() {
+							
 						},
 					},
 				});
