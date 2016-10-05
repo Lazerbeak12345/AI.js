@@ -179,6 +179,8 @@
 				}
 				$("#aiStart").dialog({
 					//autoOpen:false,
+					minWidth:600,
+					modal:true,
 				});
 				$(".group").append('<button class="min-tool" title="Minimize or Maximize tooltip"><span class="ui-icon ui-icon-circle-minus"></span></button><button class="x-tool" title="Remove tooltip"><span class="ui-icon ui-icon-circle-close"></span></button>').controlgroup();
 				$(".min-tool").bind("click",function() {
