@@ -67,9 +67,19 @@
 			</p>
 		</div>
 		<div id="aiStart" style="display:none" title="Welcome">
-			<p>Please choose your ai file, or create a new </p>
-			<button><input id="aiFile" type="file"></button>
-			
+			<div class="tabs">
+				<ul>
+					<li><a href="#has-bot-file"><span>Choose a bot from your computer</span></a></li>
+					<li><a href="#make-new-bot"><span>Make a new bot</span></a></li>
+				</ul>
+				<div id="has-bot-file">
+					<p>Please choose your ai file, or create a new AI bot</p>
+					<button><input id="aiFile" type="file"></button>
+				</div>
+				<div id="make-new-bot">
+						srry, this part is still in progress.
+				</div>
+			</div>
 		</div>
 		<script>
 			var themes={
@@ -136,6 +146,7 @@
 			$(function() {
 				$(":button").button();
 				//$("body").tooltip();
+				$(".tabs").tabs();
 				$(".theme-select").selectmenu({
 					change: function() {
 						localStorage.style=$(this).val();
