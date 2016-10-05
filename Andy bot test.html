@@ -4,12 +4,6 @@
 		<meta charset="utf-8">
 		<title>Andy bot proto</title>
 		<script src="AI.js"></script>
-		<!--script src="jquery-2.2.4.js"></script><!---->
-		<!--script src="jquery-ui/jquery-ui.js"></script><!---->
-		<!--link href="jquery-ui/jquery-ui.css" rel="stylesheet">
-		<link src="jquery-ui/jquery-ui.structure.css">
-		<link src="jquery-ui/jquery-ui.theme.css"><!---->
-		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
 		<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet"><!---->
@@ -22,7 +16,6 @@
 			margin-top:0px;
 			color:white;
 			float:right;
-			/*border:4px outset blue;*/
 			background-color:blue;
 		}
 		.userName{
@@ -36,7 +29,6 @@
 			margin-top:0px;
 			color:white;
 			float:left;
-			/*border:4px outset gray;*/
 			background-color:gray;
 			display: inline;
 		}
@@ -58,7 +50,7 @@
 		}
 		</style>
 	</head>
-	<body class="ui-widget">
+	<body class="ui-widget-content">
 		<div id="output" title="Text output will appear here">
 			<p style="text-align:center; font-size: 0.6em; color:gray">No older data found</p><!---->
 			<table style="margin:0px; width: 100%;">
@@ -186,7 +178,6 @@
 					change: function() {
 						localStorage.style=$(this).val();
 						$("#theme").prop('disabled',true).prop('href',themes[$(this).val()]).prop('disabled',false);//change theme
-						//$("body").css("font-family",$(":button").css("font-family"));
 					},
 				});
 				if (!localStorage.style) {
