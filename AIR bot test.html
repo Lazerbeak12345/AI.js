@@ -187,7 +187,7 @@
 					minWidth:600,
 					modal:true,
 					buttons:{
-						"Start talking to your bot":function() {
+						"Next":function() {
 							if ($(this).find(".ui-tabs-panel:not(.ui-tabs-hide)").index()==1&&$("#new-ai-name").val()) {
 								currentAI=$("#new-ai-name").val();
 								ais[currentAI]=new Ai($("#new-ai-name").val());
@@ -206,7 +206,7 @@
 					modal:true,
 					minWidth:170,
 					buttons:{
-						"enter":function() {
+						"Start Talking to your Bot":function() {
 							if ($("#usersName").val()) {
 								usersName=$("#usersName").val();
 								$(this).dialog("close");
