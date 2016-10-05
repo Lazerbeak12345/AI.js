@@ -1,0 +1,37 @@
+.userText{
+	padding:0 0.5em;
+	margin-top:0px;
+	color:white;
+	float:right;
+	background-color:blue;
+}
+.userName{
+	padding:0 0.5em;
+	margin-top:0px;
+	float:right;
+}
+.aiText{
+	display: inline;
+	padding:0 0.5em;
+	margin-top:0px;
+	color:white;
+	float:left;
+	background-color:gray;
+	display: inline;
+}
+.aiName{
+	display: inline;
+	height: 1em;
+	padding:0 0.5em;
+	margin-top:0px;
+	float:left;
+}
+#output{
+	padding:0px; 
+	border:1px solid gray; 
+	background-color:white;opacity: 0.8;
+	margin-left:10px;
+	margin-top:10px;
+	width:75%;
+	max-height:20em;
+}
