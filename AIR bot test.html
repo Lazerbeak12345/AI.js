@@ -196,7 +196,8 @@
 								reader.onload = function(e) {
 									var file=e.target.result.toString();
 									file=$.parseJSON(file);
-									currentAi=file.name.replace(/</g,"&#60;").replace(/>/g"&#62;");
+									file.name=file.name.replace(/</g,"&lt;").replace(/>/g"&gt;");
+									currentAi=file.name;
 									ais[currentAI]=new AI(currentAi,file);
 									$(this).dialog("close");
 									$("#userStart").dialog("open","minWidth",350);
@@ -222,7 +223,7 @@
 					minWidth:350,
 					buttons:{
 						"Start Talking to your Bot":function() {
-							usersName=$("#usersName").val()||"Guest";
+							usersName=$("#usersName").val().replace(/</g,"&lt;").replace(/>/g"&gt;")||"Guest";
 							$(this).dialog("close");
 						},
 					},
