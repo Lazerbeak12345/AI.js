@@ -246,9 +246,9 @@
 						$("#input").val($("#input").val().replace(/"/g,"\\\"").replace(/\\/g,"\\"));
 						$("#output").attr("title","");
 						enteredCmds.push($("#input").val());
-						customParse("say(\""+$("#input").val()+"\");",userFunctions);
+						strongEval("say(\""+$("#input").val()+"\");",userFunctions);
 						ais[currentAI].reactTo("say(\""+$("#input").val()+"\");");
-						customParse("say(\"(fake)"+$("#input").val()+"\");",aiFunctions);
+						strongEval("say(\"(fake)"+$("#input").val()+"\");",aiFunctions);
 					}
 					$("#input").val("");
 				});
