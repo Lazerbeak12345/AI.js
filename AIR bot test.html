@@ -196,7 +196,7 @@
 								reader.onload = function(e) {
 									var file=e.target.result.toString();
 									file=$.parseJSON(file);
-									currentAi=file.name;
+									currentAi=file.name.replace(/</g,"&#60;").replace(/>/g"&#62;");
 									ais[currentAI]=new AI(currentAi,file);
 									$(this).dialog("close");
 									$("#userStart").dialog("open","minWidth",350);
