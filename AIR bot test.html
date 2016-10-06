@@ -237,18 +237,15 @@
 					if (!(confirm("Are you sure you want to remove this widget?\n\nWidget purpose: "+$(this).parent().data("purpose")))) return;
 					$(this).parent().hide();
 				});
-				//var input=$("#input").autocomplete({source:enteredCmds});
-				var output=$("#output");
-				var enter=$("#enter");
+				//$("#input").autocomplete({source:enteredCmds});
 				$("#enter").click(function() {
-					//enteredCmds.push($("#input").val());
 					if ($("#input").val()!="") {
 						$("#input").val($("#input").val().replace(/"/g,"\\\"").replace(/\\/g,"\\"));
 						$("#output").attr("title","");
 						enteredCmds.push($("#input").val());
 						strongEval("say(\""+$("#input").val()+"\");",userFunctions);
 						ais[currentAI].reactTo("say(\""+$("#input").val()+"\");");
-						strongEval("say(\"(fake)"+$("#input").val()+"\");",aiFunctions);
+						//$("#input").autocomplete({source:enteredCmds});
 					}
 					$("#input").val("");
 				});
