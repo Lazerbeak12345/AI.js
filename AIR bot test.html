@@ -230,7 +230,7 @@
 				$("#enter").click(function() {
 					//enteredCmds.push($("#input").val());
 					if ($("#input").val()!="") {
-						$("#input").val($("#input").val().replace(/"/g,"\\\""));
+						$("#input").val($("#input").val().replace(/"/g,"\\\"").replace(/\\/g,"\\"));
 						$("#output").attr("title","");
 						enteredCmds.push($("#input").val());
 						customParse("say(\""+$("#input").val()+"\");",userFunctions);
