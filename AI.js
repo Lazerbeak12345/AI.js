@@ -1,4 +1,4 @@
-function customParse(str,globalObj) {
+function strongEval(str,globalObj) {
 	var obj={};
 	for (var index in window) {//overwrite all of the items in the global namespace (not actually changing them)
 		obj[index]=undefined;
