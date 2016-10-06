@@ -192,7 +192,7 @@
 								currentAI=$("#new-ai-name").val();
 								ais[currentAI]=new Ai($("#new-ai-name").val());
 								$(this).dialog("close");
-								$("#userStart").dialog("open");
+								$("#userStart").dialog("open","minWidth",350);
 							}
 						},
 						/*"talk to Andy instead":{//global ai bot?
@@ -204,7 +204,7 @@
 					dialogClass: 'no-close',
 					autoOpen:false,
 					modal:true,
-					minWidth:300,
+					minWidth:350,
 					buttons:{
 						"Start Talking to your Bot":function() {
 							if ($("#usersName").val()) {
