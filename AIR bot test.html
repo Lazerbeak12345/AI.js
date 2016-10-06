@@ -191,8 +191,20 @@
 					modal:true,
 					buttons:{
 						"Next":function() {
-							if ($(this).find(".ui-tabs-panel:not(.ui-tabs-hide)").index()==1&&$("#new-ai-name").val()) {
-								currentAI=$("#new-ai-name").val();
+							if($(this).find(".ui-tabs-panel:not(.ui-tabs-hide)").index()==0&&$("#aiFile").val()) {
+								var reader=new FileReader();
+								reader.onload = function(e) {
+									var file=e.target.result.toString();
+									file=$.parseJSON(file);
+									currentAi=file.name;
+									ais[currentAI]=new AI(currentAi,file);
+									$(this).dialog("close");
+									$("#userStart").dialog("open","minWidth",350);
+								}
+								$(this).append("Loading...");
+								reader.readAsText($("#aiFile")[0].files[0]);
+							}else if ($(this).find(".ui-tabs-panel:not(.ui-tabs-hide)").index()==1) {
+								currentAI=$("#new-ai-name").val()||"New Ai bot";
 								ais[currentAI]=new Ai($("#new-ai-name").val());
 								$(this).dialog("close");
 								$("#userStart").dialog("open","minWidth",350);
@@ -210,10 +222,8 @@
 					minWidth:350,
 					buttons:{
 						"Start Talking to your Bot":function() {
-							if ($("#usersName").val()) {
-								usersName=$("#usersName").val();
-								$(this).dialog("close");
-							}
+							usersName=$("#usersName").val()||"Guest";
+							$(this).dialog("close");
 						},
 					},
 				});
