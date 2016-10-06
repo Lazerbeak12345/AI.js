@@ -1,3 +1,6 @@
+.group {
+	white-space: nowrap;
+}
 .no-close .ui-dialog-titlebar-close {display: none }
 .userText{
 	padding:0 0.5em;
