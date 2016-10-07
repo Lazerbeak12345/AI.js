@@ -69,7 +69,7 @@ $(function() {
 		minHeight:30,
 		minWidth:$(window).width()/4,
 	});
-	$(window).resize({
+	$(window).resize(function() {
 		$("#output").resizable( "option", "maxHeight",$(window).height()/2);
 		$("#output").resizable( "option", "maxWidth",$(window).width()-30);
 		$("#output").resizable( "option", "minWidth",$(window).width()/4);
