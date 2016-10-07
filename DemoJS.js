@@ -66,7 +66,7 @@ $(function() {
 	$("#output").resizable({
 		maxHeight:$(window).height()/2,
 		maxWidth:$(window).width()-10,
-		minHeight:"3em",
+		minHeight:30,
 		minWidth:$(window).width()/4,
 		stop:function() {
 			$(this).resizable( "option", "maxHeight",$(window).height()/2);
