@@ -63,6 +63,12 @@ $(function() {
 	$(":button").button();
 	//$("body").tooltip();
 	$(".tabs").tabs();
+	$().resizable({
+		maxHeight:$("body").height()/2,
+		resize:function() {
+			$(this).resizable( "option", "maxWidth",$("body").height()/2);
+		}
+	});
 	$(".theme-select").selectmenu({
 		change: function() {
 			localStorage.style=$(this).val();
