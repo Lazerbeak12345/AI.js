@@ -1,7 +1,9 @@
 .group {
 	white-space: nowrap;
 }
-.no-close .ui-dialog-titlebar-close {display: none }
+.no-close .ui-dialog-titlebar-close {
+	display: none;
+}
 .userText{
 	padding:0 0.5em;
 	margin-top:0px;
@@ -33,9 +35,9 @@
 #output{
 	padding:0px; 
 	border:1px solid gray; 
-	background-color:white;opacity: 0.8;
+	background-color:white;
+	opacity: 0.8;
 	margin-left:10px;
 	margin-top:10px;
 	width:75%;
-	max-height:20em;
 }
