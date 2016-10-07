@@ -63,7 +63,7 @@ $(function() {
 	$(":button").button();
 	//$("body").tooltip();
 	$(".tabs").tabs();
-	$().resizable({
+	$("#output").resizable({
 		maxHeight:$("body").height()/2,
 		resize:function() {
 			$(this).resizable( "option", "maxWidth",$("body").height()/2);
