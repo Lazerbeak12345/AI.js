@@ -65,7 +65,7 @@ $(function() {
 	$(".tabs").tabs();
 	$("#output").resizable({
 		maxHeight:$("body").height()/2,
-		resize:function() {
+		stop:function() {
 			$(this).resizable( "option", "maxWidth",$("body").height()/2);
 		}
 	});
