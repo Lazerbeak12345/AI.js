@@ -86,7 +86,7 @@ $(function() {
 	});//make webpage scroll to show the opened list*/
 	$("#white,#black").click(function() {
 		localStorage.background=$(this).attr("id");
-		$(".octo-body,.octo-arm").css("color",$(this).attr("id"));
+		$(".octo-body,.octo-arm").css("color",$(this).attr("id")).parent().children().first().css("color",($(this).attr("id")!="white"?"white":"#151513"));
 		$("body,#output").css({"background-color":$(this).attr("id"),"color":($(this).attr("id")!="white"?"white":"black")});
 	});
 	if (!localStorage.background) {
