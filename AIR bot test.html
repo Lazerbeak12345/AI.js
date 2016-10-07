@@ -11,6 +11,61 @@
 		<link id="theme" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/ui-lightness/jquery-ui.css" rel="stylesheet"><!---->
 		<!--link href="http://cdn.wijmo.com/jquery.wijmo-pro.all.3.20133.29.min.css" rel="stylesheet"><!---->
 		<link href="CSS.css" rel="stylesheet">
+		<script type="text/javascript">
+ 
+			(function() {
+			  if (typeof window.janrain !== 'object') window.janrain = {};
+			  window.janrain.settings = {};
+			  window.janrain.settings.capture = {};
+
+			  /* _______________ can edit below this line _______________ */
+
+			  janrain.settings.packages = ['capture'];
+			  janrain.settings.tokenUrl = 'http://example.com/rpx-token-url.php';
+			  janrain.settings.capture.redirectUri = 'http://redirectdomain.com/';
+			  janrain.settings.capture.confirmModalClose = true;
+			  janrain.settings.capture.clientId = '12345678912345678912345678912345';
+			  janrain.settings.capture.responseType = 'token';
+			  janrain.settings.capture.modalBorderOpacity = 1;
+			  janrain.settings.capture.modalBorderWidth = 5;
+			  janrain.settings.capture.modalBorderRadius = 20;
+			  janrain.settings.capture.modalCloseHtml = 'X';
+			  janrain.settings.capture.modalBorderColor = '#7AB433';
+			  janrain.settings.capture.mode13 = true;
+			  janrain.settings.capture.captureServer = 'https://example.janraincapture.com';
+			  janrain.settings.capture.stylesheets = [
+			    'stylesheets/example1.css', 'stylesheets/example2.css'
+			  ];
+			  janrain.settings.capture.conditionalIEStylesheets = [
+			    'stylesheets/example-ie.css'
+			  ];
+
+			  /* _______________ can edit above this line _______________ */
+
+			  function isReady() { janrain.ready = true; };
+			  if (document.addEventListener) {
+			    document.addEventListener("DOMContentLoaded", isReady, false);
+			  } else {
+			    window.attachEvent('onload', isReady);
+			  }
+
+			  var e = document.createElement('script');
+			  e.type = 'text/javascript';
+			  e.id = 'janrainAuthWidget';
+			  e.src = 'http://12345678912345.cloudfront.net/examplev2/load.js';
+
+			  var s = document.getElementsByTagName('script')[0];
+			  s.parentNode.insertBefore(e, s);
+
+			})();
+
+			function janrainCaptureWidgetOnLoad() {
+			  janrain.events.onCaptureSuccessfulLogin.addHandler(function(result){
+			    alert('Well done! You just logged in and got an <code>accessToken</code> of ' + result.accessToken);
+			  };
+			  janrain.capture.ui.start();
+			}
+		</script>//janaran code
 	</head>
 	<body class="ui-widget">
 		<div id="output" title="Text output will appear here">
