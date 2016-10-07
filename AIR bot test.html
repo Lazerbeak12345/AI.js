@@ -205,7 +205,7 @@
 								$(this).append("Loading...");
 								reader.readAsText($("#aiFile")[0].files[0]);
 							}else if ($(this).find(".ui-tabs-panel:not(.ui-tabs-hide)").index()==1) {
-								currentAI=$("#new-ai-name").val()||"New Ai bot";
+								currentAI=$("#new-ai-name").val().replace(/</g,"&lt;").replace(/>/g,"&gt;");||"New Ai bot";
 								ais[currentAI]=new Ai($("#new-ai-name").val());
 								$(this).dialog("close");
 								$("#userStart").dialog("open","minWidth",350);
