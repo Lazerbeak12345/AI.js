@@ -65,10 +65,10 @@ $(function() {
 	$(".tabs").tabs();
 	$("#output").resizable({
 		maxHeight:$(window).height()/2,
-		maxWidth:$(window).width(),
+		maxWidth:$(window).width()-10,
 		stop:function() {
 			$(this).resizable( "option", "maxHeight",$(window).height()/2);
-			$(this).resizable( "option", "maxWidth",$(window).width()/2);
+			$(this).resizable( "option", "maxWidth",$(window).width()-10);
 		}
 	});
 	$(".theme-select").selectmenu({
