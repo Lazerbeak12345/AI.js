@@ -70,9 +70,9 @@ $(function() {
 		minWidth:$(window).width()/4,
 	});
 	$(window).resize({
-		$(this).resizable( "option", "maxHeight",$(window).height()/2);
-		$(this).resizable( "option", "maxWidth",$(window).width()-30);
-		$(this).resizable( "option", "minWidth",$(window).width()/4);
+		$("#output").resizable( "option", "maxHeight",$(window).height()/2);
+		$("#output").resizable( "option", "maxWidth",$(window).width()-30);
+		$("#output").resizable( "option", "minWidth",$(window).width()/4);
 	});
 	$(".theme-select").selectmenu({
 		change: function() {
