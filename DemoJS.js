@@ -65,8 +65,10 @@ $(function() {
 	$(".tabs").tabs();
 	$("#output").resizable({
 		maxHeight:$(window).height()/2,
+		maxWidth:$(window).width(),
 		stop:function() {
-			$(this).resizable( "option", "maxWidth",$(window).height()/2);
+			$(this).resizable( "option", "maxHeight",$(window).height()/2);
+			$(this).resizable( "option", "maxWidth",$(window).width()/2);
 		}
 	});
 	$(".theme-select").selectmenu({
