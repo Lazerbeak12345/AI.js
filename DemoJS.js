@@ -71,7 +71,7 @@ $(function() {
 		stop:function() {
 			$(this).resizable( "option", "maxHeight",$(window).height()/2);
 			$(this).resizable( "option", "maxWidth",$(window).width()-10);
-			$(this).resizable( "option", "maxWidth",$(window).width()/4);
+			$(this).resizable( "option", "minWidth",$(window).width()/4);
 		},
 	});
 	$(".theme-select").selectmenu({
