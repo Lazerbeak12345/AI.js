@@ -7,7 +7,7 @@ function strongEval(str,globalObj) {
 		if (globalObj.hasOwnProperty(index)) obj[index]=globalObj[index];
 	}
 	str=str.replace(/{\s*$/,"").replace(/^[^{]*}/,"");
-	console.log(str);
+	//console.log(str);
 	return (new Function("window","with(window) {"+str+"}"))(obj);
 };
 function Ai(name,obj/*opt*/) {
