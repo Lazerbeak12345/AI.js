@@ -64,9 +64,9 @@ $(function() {
 	//$("body").tooltip();
 	$(".tabs").tabs();
 	$("#output").resizable({
-		maxHeight:$("body").height()/2,
+		maxHeight:$(window).height()/2,
 		stop:function() {
-			$(this).resizable( "option", "maxWidth",$("body").height()/2);
+			$(this).resizable( "option", "maxWidth",$(window).height()/2);
 		}
 	});
 	$(".theme-select").selectmenu({
