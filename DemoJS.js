@@ -51,12 +51,13 @@ userFunctions.say=function(text) {
 	text=text.replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/^\s*/g,"").replace(/\s*$/g,"");
 	$("#output").css({"overflow":"scroll","overflow-x":"hidden"}).find("tbody").append("<tr style='min-height:1em'><td></td><td style='float:right'><p class='userText ui-corner-left ui-corner-top'>"+text+"</p><td/><td style='vertical-align: bottom;'><p class='userName'>"+usersName+"</p></td></tr>");
 	$("#output").animate({ scrollTop: $('#output').find("tbody").last().height()}, 2000);
-	//$(window).animate({scrollTop:$('#output').position()./*bottom*/top},2000);
+	emojify.run();
 };
 aiFunctions.say=function(text) {
 	text=text.replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/^\s*/g,"").replace(/\s*$/g,"");
 	$("#output").css({"overflow":"scroll","overflow-x":"hidden"}).find("tbody").append("<tr style='min-height:1em'><td style='vertical-align: bottom;'><p class='aiName'>"+currentAI+"</p></td><td style='float:left'><p class='aiText ui-corner-right ui-corner-top'>"+text+"</p><td/><td></td></tr>");
 	$("#output").animate({ scrollTop: $('#output').find("tbody").last().height()}, 2000);
+	emojify.run();
 };
 var ais={};
 $(function() {
