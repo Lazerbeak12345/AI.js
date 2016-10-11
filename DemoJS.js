@@ -51,12 +51,36 @@ userFunctions.say=function(text) {
 	text=text.replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/^\s*/g,"").replace(/\s*$/g,"");
 	$("#output").css({"overflow":"scroll","overflow-x":"hidden"}).find("tbody").append("<tr style='min-height:1em'><td></td><td style='float:right'><p class='userText ui-corner-left ui-corner-top'>"+text+"</p><td/><td style='vertical-align: bottom;'><p class='userName'>"+usersName+"</p></td></tr>");
 	$("#output").animate({ scrollTop: $('#output').find("tbody").last().height()}, 2000);
+	emojify.setConfig({
+	    emojify_tag_type : 'div',           // Only run emojify.js on this element
+	    only_crawl_id    : null,            // Use to restrict where emojify.js applies
+	    img_dir          : '//cdnjs.cloudflare.com/ajax/libs/emojify.js/1.1.0/images/basic/',  // Directory for emoji images
+	    ignored_tags     : {                // Ignore the following tags
+		'SCRIPT'  : 1,
+		'TEXTAREA': 1,
+		'A'       : 1,
+		'PRE'     : 1,
+		'CODE'    : 1
+	    }
+	});
 	emojify.run();
 };
 aiFunctions.say=function(text) {
 	text=text.replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/^\s*/g,"").replace(/\s*$/g,"");
 	$("#output").css({"overflow":"scroll","overflow-x":"hidden"}).find("tbody").append("<tr style='min-height:1em'><td style='vertical-align: bottom;'><p class='aiName'>"+currentAI+"</p></td><td style='float:left'><p class='aiText ui-corner-right ui-corner-top'>"+text+"</p><td/><td></td></tr>");
 	$("#output").animate({ scrollTop: $('#output').find("tbody").last().height()}, 2000);
+	emojify.setConfig({
+	    emojify_tag_type : 'div',           // Only run emojify.js on this element
+	    only_crawl_id    : null,            // Use to restrict where emojify.js applies
+	    img_dir          : '//cdnjs.cloudflare.com/ajax/libs/emojify.js/1.1.0/images/basic/',  // Directory for emoji images
+	    ignored_tags     : {                // Ignore the following tags
+		'SCRIPT'  : 1,
+		'TEXTAREA': 1,
+		'A'       : 1,
+		'PRE'     : 1,
+		'CODE'    : 1
+	    }
+	});
 	emojify.run();
 };
 var ais={};
