@@ -63,7 +63,7 @@ userFunctions.say=function(text) {
 		'CODE'    : 1
 	    }
 	});
-	emojify.run();
+	emojify.run($("#output p")[$("#output p").length-2]);
 };
 aiFunctions.say=function(text) {
 	text=text.replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/^\s*/g,"").replace(/\s*$/g,"");
@@ -81,7 +81,7 @@ aiFunctions.say=function(text) {
 		'CODE'    : 1
 	    }
 	});
-	emojify.run();
+	emojify.run($("#output p")[$("#output p").length-2]);
 };
 var ais={};
 $(function() {
