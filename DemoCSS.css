@@ -1,8 +1,16 @@
-.group {
-	white-space: nowrap;
+
+.emoji{
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    background-size: contain;
 }
 .no-close .ui-dialog-titlebar-close {
 	display: none;
+}
+/*my classes and ID's*/
+.group {
+	white-space: nowrap;
 }
 .userText{
 	padding:0 0.5em;
