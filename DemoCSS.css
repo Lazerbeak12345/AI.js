@@ -1,9 +1,10 @@
 
 .emoji{
-    width: 1em;
-    height: 1em;
-    display: inline-block;
-    background-size: contain;
+	width: 1em;
+	height: 1em;
+	display: inline-block;
+	margin: auto;
+	background-size: contain;
 }
 .no-close .ui-dialog-titlebar-close {
 	display: none;
