@@ -3,7 +3,7 @@
 	width: 1em;
 	height: 1em;
 	display: inline-block;
-	margin: auto;
+	margin-bottom: 2px;
 	background-size: contain;
 }
 .no-close .ui-dialog-titlebar-close {
