@@ -93,6 +93,9 @@ $(function() {
 		maxWidth:$(window).width()-30,
 		minHeight:30,
 		minWidth:$(window).width()/4,
+		resize:function(event,ui) {
+			$(this).find("div").not(".ui-resizable-handle").height(ui.size.height).width(ui.size.width);
+		},
 	});
 	$(window).resize(function() {
 		$("#output").resizable( "option", "maxHeight",$(window).height()/2);
