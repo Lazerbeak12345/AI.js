@@ -49,8 +49,8 @@ currentAI="",
 usersName="";
 userFunctions.say=function(text) {
 	text=text.replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/^\s*/g,"").replace(/\s*$/g,"");
-	$("#output").css({"overflow":"scroll","overflow-x":"hidden"}).find("tbody").append("<tr style='min-height:1em'><td></td><td style='float:right'><p class='userText ui-corner-left ui-corner-top'>"+text+"</p><td/><td style='vertical-align: bottom;'><p class='userName'>"+usersName+"</p></td></tr>");
-	$("#output").animate({ scrollTop: $('#output').find("tbody").last().height()}, 2000);
+	$("#output>div").css({"overflow":"scroll","overflow-x":"hidden"}).find("tbody").append("<tr style='min-height:1em'><td></td><td style='float:right'><p class='userText ui-corner-left ui-corner-top'>"+text+"</p><td/><td style='vertical-align: bottom;'><p class='userName'>"+usersName+"</p></td></tr>");
+	$("#output>div").animate({ scrollTop: $($("#output p")[$("#output p").length-2]).height()}, 2000);
 	emojify.setConfig({
 	    emojify_tag_type : 'p',           // Only run emojify.js on this element
 	    only_crawl_id    : null,            // Use to restrict where emojify.js applies
@@ -67,8 +67,8 @@ userFunctions.say=function(text) {
 };
 aiFunctions.say=function(text) {
 	text=text.replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/^\s*/g,"").replace(/\s*$/g,"");
-	$("#output").css({"overflow":"scroll","overflow-x":"hidden"}).find("tbody").append("<tr style='min-height:1em'><td style='vertical-align: bottom;'><p class='aiName'>"+currentAI+"</p></td><td style='float:left'><p class='aiText ui-corner-right ui-corner-top'>"+text+"</p><td/><td></td></tr>");
-	$("#output").animate({ scrollTop: $('#output').find("tbody").last().height()}, 2000);
+	$("#output>div").css({"overflow":"scroll","overflow-x":"hidden"}).find("tbody").append("<tr style='min-height:1em'><td style='vertical-align: bottom;'><p class='aiName'>"+currentAI+"</p></td><td style='float:left'><p class='aiText ui-corner-right ui-corner-top'>"+text+"</p><td/><td></td></tr>");
+	$("#output>div").animate({ scrollTop: $($("#output p")[$("#output p").length-2]).height()}, 2000);
 	emojify.setConfig({
 	    emojify_tag_type : 'p',           // Only run emojify.js on this element
 	    only_crawl_id    : null,            // Use to restrict where emojify.js applies
