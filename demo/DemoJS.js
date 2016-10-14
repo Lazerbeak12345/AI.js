@@ -49,7 +49,7 @@ currentAI="",
 usersName="";
 userFunctions.say=function(text) {
 	text=text.replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/^\s*/g,"").replace(/\s*$/g,"");
-	$("#output>div").not(".ui-resizable-handle").css({"overflow":"scroll","overflow-x":"hidden"}).find("tbody").append("<tr style='min-height:1em'><td></td><td style='float:right'><p class='userText ui-corner-left ui-corner-top'>"+text+"</p><td/><td style='vertical-align: bottom;'><p class='userName'>"+usersName+"</p></td></tr>");
+	$("#output>div").not(".ui-resizable-handle").css({"overflow":"scroll","overflow-x":"hidden"}).find("tbody").append("<tr style='min-height:1em'><td style='height:1px'></td><td style='float:right'><p class='userText ui-corner-left ui-corner-top'>"+text+"</p><td/><td style='vertical-align: bottom;'><p class='userName'>"+usersName+"</p></td></tr>");
 	$("#output>div").not(".ui-resizable-handle").animate({ scrollTop: "+="+$($("#output p")[$("#output p").length-2]).outerHeight()}, 2000);
 	emojify.setConfig({
 	    emojify_tag_type : 'p',           // Only run emojify.js on this element
@@ -67,7 +67,7 @@ userFunctions.say=function(text) {
 };
 aiFunctions.say=function(text) {
 	text=text.replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/^\s*/g,"").replace(/\s*$/g,"");
-	$("#output>div").not(".ui-resizable-handle").css({"overflow":"scroll","overflow-x":"hidden"}).find("tbody").append("<tr style='min-height:1em'><td style='vertical-align: bottom;'><p class='aiName'>"+currentAI+"</p></td><td style='float:left'><p class='aiText ui-corner-right ui-corner-top'>"+text+"</p><td/><td></td></tr>");
+	$("#output>div").not(".ui-resizable-handle").css({"overflow":"scroll","overflow-x":"hidden"}).find("tbody").append("<tr style='min-height:1em'><td style='vertical-align: bottom;'><p class='aiName'>"+currentAI+"</p></td><td style='float:left'><p class='aiText ui-corner-right ui-corner-top'>"+text+"</p><td/><td style='height:1px'></td></tr>");
 	$("#output>div").not(".ui-resizable-handle").animate({ scrollTop: "+="+$($("#output p")[$("#output p").length-2]).outerHeight()}, 2000);
 	emojify.setConfig({
 	    emojify_tag_type : 'p',           // Only run emojify.js on this element
