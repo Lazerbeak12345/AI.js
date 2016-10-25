@@ -25,6 +25,7 @@ function Ai(name,obj/*opt*/) {
 	if  (arguments.length<1) throw "The Ai constructor requires 1-2 values passed";
 	obj=obj||{};//prevent bugs
 	this.name=name||"AIR bot";
+	this._defaultResp={};
 	//add more props as build continues
 	
 	for (var i in obj) {
@@ -38,7 +39,13 @@ Ai.prototype.reactTo=function(input,from) {
 	How to use this function:
 	
 		var myAi= new Ai("My AI's name");
-		myAi.reactTo("input"//usually somthing like "say(\"Lorem ipsum dolor sit amet.\");" or "moveTo(12,34);"
-		)
+		var aisOutput=myAi.reactTo("input","usersName");//input is usually somthing like "say(\"Lorem ipsum dolor sit amet.\");" or "moveTo(12,34);"
 	*/
+	var output="";//set varubles
+	
+	if (this._defaultResp.hasOwnProperty(input)) output+=this._defaultResp[input];//add to output
+	
+	//edit output(remove negetaive phrases)
+	
+	return output;
 }
