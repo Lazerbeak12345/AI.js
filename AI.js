@@ -22,11 +22,13 @@ function Ai(name,obj/*opt*/) {
 			//values here
 		});//2nd
 	*/
-	if  (arguments.length<1) throw "The Ai constructor requires 1-2 values passed";
+	if  (arguments.length==0||arguments.length>2) throw "The Ai constructor requires 1-2 values passed";
 	obj=obj||{};//prevent bugs
 	this.name=name||"AIR bot";
 	this._defaultResp={};
-	//add more props as build continues
+	this.types={
+		string:function(str) {return str},
+	};
 	
 	for (var i in obj) {
 		this[i]=obj[i];//overwrite with obj
@@ -34,18 +36,28 @@ function Ai(name,obj/*opt*/) {
 	
 	if (typeof this.name!="string") throw "The name for your Ai bot must be a string";
 };
-Ai.prototype.reactTo=function(input,from) {
+Ai.prototype.reactTo=function(input,name,type) {
 	/*
 	How to use this function:
 	
 		var myAi= new Ai("My AI's name");
-		var aisOutput=myAi.reactTo("input","usersName");//input is usually somthing like "say(\"Lorem ipsum dolor sit amet.\");" or "moveTo(12,34);"
+		var aisOutput=myAi.reactTo("input","usersname","type of input(optional but will use the typeof operator to determine this value if not specified)");
 	*/
-	var output="";//set varubles
+	var output="",//set varubles
+	type=type||typeof input;
 	
-	if (this._defaultResp.hasOwnProperty(input)) output+=this._defaultResp[input];//add to output
+	//check varubles
+	if (typeof this.types[type]==="undefined") {
+		throw "Invalid type";
+	}else{
+		input=this.types[type](input);
+	}
+	
+	if (this._defaultResp.hasOwnProperty(input)) output+=this._defaultResp[input];
 	
 	//edit output(remove negetaive phrases)
 	
-	return output;
+	//act
+	this._defaultResp[input]=output;//add as responce
+	return output;//return value for further prossesing
 }
