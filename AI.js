@@ -26,12 +26,17 @@ function Ai(name,obj/*opt*/) {
 	obj=obj||{};//prevent bugs
 	this.name=name||"AIR bot";
 	this._defaultResp={};
+	this._allresps=[];
 	this.types={
 		string:function(str) {return str},
 	};
 	
-	for (var i in obj) {
-		this[i]=obj[i];//overwrite with obj
+	for (var i in this) {
+		if (typeof this[i]=="object") {
+			for (var ii in obj[i]) {
+				this[i][ii]=obj[i][ii];
+			}
+		}else this[i]=obj[i];//overwrite with obj
 	}
 	
 	if (typeof this.name!="string") throw "The name for your Ai bot must be a string";
@@ -53,6 +58,7 @@ Ai.prototype.reactTo=function(input,name,type) {
 		input=this.types[type](input);
 	}
 	
+	//apply default responce
 	if (this._defaultResp.hasOwnProperty(input)) output+=this._defaultResp[input];
 	
 	//edit output(remove negetaive phrases)
