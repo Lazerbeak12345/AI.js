@@ -194,7 +194,7 @@ $(function() {
 			$("#output").attr("title","");
 			enteredCmds.push($("#input").val());
 			strongEval("say(\""+$("#input").val()+"\");",userFunctions);
-			ais[currentAI].reactTo("say(\""+$("#input").val()+"\");");
+			strongEval(ais[currentAI].reactTo("say(\""+$("#input").val()+"\");"),aiFunctions);
 			//$("#input").autocomplete({source:enteredCmds});
 		}
 		$("#input").val("");
