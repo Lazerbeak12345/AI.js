@@ -39,7 +39,9 @@ function Ai(name,obj/*opt*/) {
 		}else this[i]=obj[i];//overwrite with obj
 	}
 	
-	if (typeof this.name!="string") throw "The name for your Ai bot must be a string";
+	/*if (typeof this.name!=="string") {
+		throw "The name for your Ai bot must be a string";
+	}*/
 };
 Ai.prototype.reactTo=function(input,name,type) {
 	/*
