@@ -1,5 +1,5 @@
 (function(g,strongEval,Ai) {
-	if (exports) {
+	if (typeof exports!="undefined") {
 		exports.strongEval=strongEval;
 		exports.Ai=Ai;
 	}else{
