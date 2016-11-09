@@ -1,5 +1,3 @@
-npm install --save-dev jshint gulp-jshint
-
 module.exports = function(grunt) {
  
   grunt.initConfig({
