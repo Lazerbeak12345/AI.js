@@ -1,34 +1,22 @@
 var themes={
-	/* extra styles
-	"delta":"http://kiandra.github.io/Delta-jQuery-UI-Theme/theme/jquery-ui.css",
-	"aristo":"http://taitems.github.io/Aristo-jQuery-UI-Theme/css/Aristo/Aristo.css",
-	"artic":"http://cdn.wijmo.com/themes/arctic/jquery-wijmo.css",/* *///theme from http://wijmo.com/theming/
-	/*jquery-ui styles*/
-	"base":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css",
-	"black tie":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/black-tie/jquery-ui.css",
-	"blitzer":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/blitzer/jquery-ui.css",
-	"cupertino":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/cupertino/jquery-ui.css",
-	"dark hive":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/dark-hive/jquery-ui.css",
-	"dot luv":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/dot-luv/jquery-ui.css",
-	"eggplant":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/eggplant/jquery-ui.css",
-	"excite bike":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/excite-bike/jquery-ui.css",
-	"flick":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/flick/jquery-ui.css",
-	"hot sneaks":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/hot-sneaks/jquery-ui.css",
-	"humanity":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/humanity/jquery-ui.css",
-	"le frog":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/le-frog/jquery-ui.css",
-	"mint choc":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/mint-choc/jquery-ui.css",
-	"overcast":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/overcast/jquery-ui.css",
-	"pepper grinder":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/pepper-grinder/jquery-ui.css",
-	"redmond":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/redmond/jquery-ui.css",
-	"smoothness":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css",
-	"south street":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/south-street/jquery-ui.css",
-	"start":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/start/jquery-ui.css",
-	"sunny":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/sunny/jquery-ui.css",
-	"swanky purse":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/swanky-purse/jquery-ui.css",
-	"trontastic":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/trontastic/jquery-ui.css",
-	"ui darkness":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/ui-darkness/jquery-ui.css",
-	"ui lightness":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/ui-lightness/jquery-ui.css",
-	"vader":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/vader/jquery-ui.css",
+	"Cerulean":"https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cerulean/bootstrap.min.css",
+	"Cosmo":"https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cosmo/bootstrap.min.css",
+	"Cyborg":"https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cyborg/bootstrap.min.css",
+	"Darkly":"https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/darkly/bootstrap.min.css",
+	"Default":"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css",
+	"Flatly":"https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css",
+	"Font-awesome":"https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css",
+	"Journal":"https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/journal/bootstrap.min.css",
+	"Lumen":"https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css",
+	"Paper":"https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/paper/bootstrap.min.css",
+	"Readable":"https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/readable/bootstrap.min.css",
+	"Sandstone":"https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/sandstone/bootstrap.min.css",
+	"Simplex":"https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/simplex/bootstrap.min.css",
+	"Slate":"https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/slate/bootstrap.min.css",
+	"Spacelab":"https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/spacelab/bootstrap.min.css",
+	"Superhero":"https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/superhero/bootstrap.min.css",
+	"United":"https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/united/bootstrap.min.css",
+	"Yeti":"https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/yeti/bootstrap.min.css",
 }
 function download(filename, text) {
 	var element = document.createElement('a');
@@ -109,7 +97,7 @@ $(function() {
 		},
 	});
 	if (!localStorage.style) {
-		localStorage.style="ui-lightness";
+		localStorage.style="Default";
 	}else{
 		$(".theme-select").val(localStorage.style);
 		$("#theme").prop('disabled',true).prop('href',themes[$(".theme-select").val()]).prop('disabled',false);//change theme
