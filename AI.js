@@ -1,45 +1,27 @@
 (function(g,strongEval,Ai) {
-
-	if (exports) {
-
+	if (typeof exports!="undefined") {
 		exports.strongEval=strongEval;
-
 		exports.Ai=Ai;
-
+	}else{
+		window.strongEval=strongEval;
+		window.Ai=Ai;
 	}
-
 })(this,(function() {
-
 	var strongEval=function(str,globalObj) {
-
 		var obj={};
-
 		/*for (var index in window) {//overwrite all of the items in the global namespace (not actually changing them)
-
 			obj[index]=undefined;
-
 		}*/
-
 		for (var index in this) {//overwrite all of the items in the global-ish namespace (not actually changing them)
-
 			obj[index]=undefined;
-
 		}
-
 		for (var index in globalObj) {//copy over properties from passed object
-
 			if (globalObj.hasOwnProperty(index)) obj[index]=globalObj[index];
-
 		}
-
 		str=str.replace(/{\s*$/,"").replace(/^[^{]*}/,"");
-
 		//console.log(str);
-
 		return (new Function("window","with(window) {"+str+"}")).call(globalObj,obj);
-
-	};
-
+};
 	return strongEval;
 
 })(),(function() {
@@ -137,25 +119,15 @@
 		}
 
 
-
 		//apply default responce
 
 		if (this._defaultResp.hasOwnProperty(input)) output+=this._defaultResp[input];
 
-
-
 		//edit output(remove negetaive phrases)
 
-
-
 		//act
-
 		this._defaultResp[input]=output;//add as responce
-
 		return output;//return value for further prossesing
-
 	}
-
 	return Ai;
-
 })())
