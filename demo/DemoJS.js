@@ -18,6 +18,10 @@ var themes={
 	"United":"https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/united/bootstrap.min.css",
 	"Yeti":"https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/yeti/bootstrap.min.css",
 }
+function changeThemeTo(theme) {
+	localStorage.style=theme;
+	$("#theme").prop('disabled',true).prop('href',themes[theme]).prop('disabled',false);//change theme
+}
 function download(filename, text) {
 	var element = document.createElement('a');
 	element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
@@ -90,12 +94,10 @@ $(function() {
 		$("#output").resizable( "option", "maxWidth",$(window).width()-30);
 		$("#output").resizable( "option", "minWidth",$(window).width()/4);
 	});
-	$(".theme-select").selectmenu({
-		change: function() {
-			localStorage.style=$(this).val();
-			$("#theme").prop('disabled',true).prop('href',themes[$(this).val()]).prop('disabled',false);//change theme
-		},
-	});
+	for(var i in themes) {
+		$(".theme-select").append($('<li><a onclick="changeThemeTo(\''+i+'\')">'+i+'</a></li>'));
+		console.log("Theme \"",i,"\" added");
+	}
 	if (!localStorage.style) {
 		localStorage.style="Default";
 	}else{
