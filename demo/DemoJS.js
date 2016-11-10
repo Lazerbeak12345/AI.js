@@ -77,9 +77,6 @@ aiFunctions.say=function(text) {
 };
 var ais={};
 $(function() {
-	$(":button").button();
-	//$("body").tooltip();
-	$(".tabs").tabs();
 	$("#output").resizable({
 		maxHeight:$(window).height()/2,
 		maxWidth:$(window).width()-30,
@@ -96,7 +93,6 @@ $(function() {
 	});
 	for(var i in themes) {
 		$(".theme-select").append($('<li><a onclick="changeThemeTo(\''+i+'\')">'+i+'</a></li>'));
-		console.log("Theme \"",i,"\" added");
 	}
 	if (!localStorage.style) {
 		localStorage.style="Default";
@@ -108,76 +104,9 @@ $(function() {
 	$(":file").css("margin","0px").parent().css("padding","0px").find(":file").addClass("ui-button").before('<div style="position:absolute; margin-bottom:0px; cursor: pointer; margin-top:0.5em" class="">Choose file (No file chosen)</div>').css({opacity:0}).change(function() {
 		$(this).prev().text("Choose file ("+($(this).val().substring($(this).val().lastIndexOf("\\")+1)||"No file chosen")+")");
 	});
-	$(".ui-selectmenu-button").click(function() {
-		$("body").animate({
-			scrollTop:"+=100px",
-		},1000);
-	});//make webpage scroll to show the opened list*/
-	$("#white,#black").click(function() {
-		localStorage.background=$(this).attr("id");
-		$(".github-corner svg").css("fill",($(this).attr("id")!="white"?"white":"#151513"));
-		$(".octo-body,.octo-arm").css("color",$(this).attr("id"));
-		$("body,#output").css({"background-color":$(this).attr("id"),"color":($(this).attr("id")!="white"?"white":"black")});
-	});
 	if (!localStorage.background) {
-		localStorage.background="white";
-	}else{
-		$("#"+localStorage.background).attr("checked",true).click().parent()//.controlgroup("refresh");
+		localStorage.clear();
 	}
-	$("#aiStart").dialog({
-		dialogClass: 'no-close',
-		minWidth:600,
-		modal:true,
-		buttons:{
-			"Next":function() {
-				if($(this).find(".ui-tabs-panel:not(.ui-tabs-hide)").index()==0&&$("#aiFile").val()) {
-					var reader=new FileReader();
-					reader.onload = function(e) {
-						var file=e.target.result.toString();
-						file=$.parseJSON(file);
-						file.name=file.name.replace(/</g,"&lt;").replace(/>/g,"&gt;");
-						currentAi=file.name;
-						ais[currentAI]=new AI(currentAi,file);
-						$(this).dialog("close");
-						$("#userStart").dialog("open","minWidth",350);
-					}
-					$(this).append("Loading...");
-					reader.readAsText($("#aiFile")[0].files[0]);
-				}else if ($(this).find(".ui-tabs-panel:not(.ui-tabs-hide)").index()==1) {
-					currentAI=$("#new-ai-name").val().replace(/</g,"&lt;").replace(/>/g,"&gt;")||"New Ai bot";
-					ais[currentAI]=new Ai($("#new-ai-name").val());
-					$(this).dialog("close");
-					$("#userStart").dialog("open","minWidth",350);
-				}
-			},
-			/*"talk to Andy instead":{//global ai bot?
-
-			},*/
-		},
-	});
-	$("#userStart").dialog({
-		dialogClass: 'no-close',
-		autoOpen:false,
-		modal:true,
-		minWidth:350,
-		buttons:{
-			"Start Talking to your Bot":function() {
-				usersName=$("#usersName").val().replace(/</g,"&lt;").replace(/>/g,"&gt;")||"Guest";
-				$(this).dialog("close");
-			},
-		},
-	});
-	$(".group").append('<button class="min-tool" title="Minimize or Maximize tooltip"><span class="ui-icon ui-icon-circle-minus"></span></button><button class="x-tool" title="Remove tooltip"><span class="ui-icon ui-icon-circle-close"></span></button>').controlgroup();
-	$(".min-tool").bind("click",function() {
-		$(this).parent().find(".min-tool").toggleClass("ui-corner-all",900)//soften (or harden) edges
-		.siblings().not(".min-tool,select")//find all siblings exclding myself or tools with the same class or things that need to stay hidden
-		.toggle(900);//and toggle their visibility with an animation
-	});
-	$(".x-tool").bind("click",function() {
-		if (!(confirm("Are you sure you want to remove this widget?\n\nWidget purpose: "+$(this).parent().data("purpose")))) return;
-		$(this).parent().hide();
-	});
-	//$("#input").autocomplete({source:enteredCmds});
 	$("#enter").click(function() {
 		if ($("#input").val()!="") {
 			$("#input").val($("#input").val().replace(/"/g,"\\\"").replace(/\\/g,"\\"));
