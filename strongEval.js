@@ -1,5 +1,5 @@
 (function(g,strongEval) {
-  if (exports) {
+  if (typeof exports!="undefined") {
     exports=strongEval;
   }else{
     g.strongEval=strongEval;
