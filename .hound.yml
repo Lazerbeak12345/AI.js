@@ -1,3 +1,2 @@
 jshint:
-  ignore_file: *.min.js
   config_file: .jshintrc
