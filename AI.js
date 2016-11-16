@@ -1,30 +1,11 @@
-(function(g,strongEval,Ai) {
+(function(g,Ai) {
 	if (typeof exports!="undefined") {
-		exports.strongEval=strongEval;
-		exports.Ai=Ai;
+		//exports.strongEval=strongEval;
+		exports=Ai;
 	}else{
-		g.strongEval=strongEval;
 		g.Ai=Ai;
 	}
 })(this,(function() {
-	var strongEval=function(str,globalObj) {
-		var obj={};
-		/*for (var index in window) {//overwrite all of the items in the global namespace (not actually changing them)
-			obj[index]=undefined;
-		}*/
-		for (var index in this) {//overwrite all of the items in the global-ish namespace (not actually changing them)
-			obj[index]=undefined;
-		}
-		for (var index in globalObj) {//copy over properties from passed object
-			if (globalObj.hasOwnProperty(index)) obj[index]=globalObj[index];
-		}
-		str=str.replace(/{\s*$/,"").replace(/^[^{]*}/,"");
-		//console.log(str);
-		return (new Function("window","with(window) {"+str+"}")).call(globalObj,obj);
-	};
-	return strongEval;
-
-})(),(function() {
 	var Ai=function(name,obj/*opt*/) {
 		/*
 		There are 2 ways two run this function
