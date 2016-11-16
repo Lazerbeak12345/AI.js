@@ -1,34 +1,26 @@
 var themes={
-	/* extra styles
-	"delta":"http://kiandra.github.io/Delta-jQuery-UI-Theme/theme/jquery-ui.css",
-	"aristo":"http://taitems.github.io/Aristo-jQuery-UI-Theme/css/Aristo/Aristo.css",
-	"artic":"http://cdn.wijmo.com/themes/arctic/jquery-wijmo.css",/* *///theme from http://wijmo.com/theming/
-	/*jquery-ui styles*/
-	"base":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css",
-	"black tie":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/black-tie/jquery-ui.css",
-	"blitzer":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/blitzer/jquery-ui.css",
-	"cupertino":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/cupertino/jquery-ui.css",
-	"dark hive":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/dark-hive/jquery-ui.css",
-	"dot luv":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/dot-luv/jquery-ui.css",
-	"eggplant":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/eggplant/jquery-ui.css",
-	"excite bike":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/excite-bike/jquery-ui.css",
-	"flick":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/flick/jquery-ui.css",
-	"hot sneaks":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/hot-sneaks/jquery-ui.css",
-	"humanity":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/humanity/jquery-ui.css",
-	"le frog":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/le-frog/jquery-ui.css",
-	"mint choc":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/mint-choc/jquery-ui.css",
-	"overcast":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/overcast/jquery-ui.css",
-	"pepper grinder":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/pepper-grinder/jquery-ui.css",
-	"redmond":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/redmond/jquery-ui.css",
-	"smoothness":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css",
-	"south street":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/south-street/jquery-ui.css",
-	"start":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/start/jquery-ui.css",
-	"sunny":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/sunny/jquery-ui.css",
-	"swanky purse":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/swanky-purse/jquery-ui.css",
-	"trontastic":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/trontastic/jquery-ui.css",
-	"ui darkness":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/ui-darkness/jquery-ui.css",
-	"ui lightness":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/ui-lightness/jquery-ui.css",
-	"vader":"https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/vader/jquery-ui.css",
+	"Cerulean":"https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cerulean/bootstrap.min.css",
+	"Cosmo":"https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cosmo/bootstrap.min.css",
+	"Cyborg":"https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cyborg/bootstrap.min.css",
+	"Darkly":"https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/darkly/bootstrap.min.css",
+	"Default":"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css",
+	"Flatly":"https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css",
+	"Font-awesome":"https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css",
+	"Journal":"https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/journal/bootstrap.min.css",
+	"Lumen":"https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css",
+	"Paper":"https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/paper/bootstrap.min.css",
+	"Readable":"https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/readable/bootstrap.min.css",
+	"Sandstone":"https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/sandstone/bootstrap.min.css",
+	"Simplex":"https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/simplex/bootstrap.min.css",
+	"Slate":"https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/slate/bootstrap.min.css",
+	"Spacelab":"https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/spacelab/bootstrap.min.css",
+	"Superhero":"https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/superhero/bootstrap.min.css",
+	"United":"https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/united/bootstrap.min.css",
+	"Yeti":"https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/yeti/bootstrap.min.css",
+}
+function changeThemeTo(theme) {
+	localStorage.style=theme;
+	$("#theme").prop('disabled',true).prop('href',themes[theme]).prop('disabled',false);//change theme
 }
 function download(filename, text) {
 	var element = document.createElement('a');
@@ -85,9 +77,6 @@ aiFunctions.say=function(text) {
 };
 var ais={};
 $(function() {
-	$(":button").button();
-	//$("body").tooltip();
-	$(".tabs").tabs();
 	$("#output").resizable({
 		maxHeight:$(window).height()/2,
 		maxWidth:$(window).width()-30,
@@ -102,92 +91,21 @@ $(function() {
 		$("#output").resizable( "option", "maxWidth",$(window).width()-30);
 		$("#output").resizable( "option", "minWidth",$(window).width()/4);
 	});
-	$(".theme-select").selectmenu({
-		change: function() {
-			localStorage.style=$(this).val();
-			$("#theme").prop('disabled',true).prop('href',themes[$(this).val()]).prop('disabled',false);//change theme
-		},
-	});
+	for(var i in themes) {
+		$(".theme-select").append($('<li><a onclick="changeThemeTo(\''+i+'\')">'+i+'</a></li>'));
+	}
 	if (!localStorage.style) {
-		localStorage.style="ui-lightness";
+		localStorage.style="Default";
 	}else{
 		$(".theme-select").val(localStorage.style);
 		$("#theme").prop('disabled',true).prop('href',themes[$(".theme-select").val()]).prop('disabled',false);//change theme
-		$(".theme-select").selectmenu("refresh");
 	}
 	$(":file").css("margin","0px").parent().css("padding","0px").find(":file").addClass("ui-button").before('<div style="position:absolute; margin-bottom:0px; cursor: pointer; margin-top:0.5em" class="">Choose file (No file chosen)</div>').css({opacity:0}).change(function() {
 		$(this).prev().text("Choose file ("+($(this).val().substring($(this).val().lastIndexOf("\\")+1)||"No file chosen")+")");
 	});
-	$(".ui-selectmenu-button").click(function() {
-		$("body").animate({
-			scrollTop:"+=100px",
-		},1000);
-	});//make webpage scroll to show the opened list*/
-	$("#white,#black").click(function() {
-		localStorage.background=$(this).attr("id");
-		$(".github-corner svg").css("fill",($(this).attr("id")!="white"?"white":"#151513"));
-		$(".octo-body,.octo-arm").css("color",$(this).attr("id"));
-		$("body,#output").css({"background-color":$(this).attr("id"),"color":($(this).attr("id")!="white"?"white":"black")});
-	});
 	if (!localStorage.background) {
-		localStorage.background="white";
-	}else{
-		$("#"+localStorage.background).attr("checked",true).click().parent()//.controlgroup("refresh");
+		localStorage.clear();
 	}
-	$("#aiStart").dialog({
-		dialogClass: 'no-close',
-		minWidth:600,
-		modal:true,
-		buttons:{
-			"Next":function() {
-				if($(this).find(".ui-tabs-panel:not(.ui-tabs-hide)").index()==0&&$("#aiFile").val()) {
-					var reader=new FileReader();
-					reader.onload = function(e) {
-						var file=e.target.result.toString();
-						file=$.parseJSON(file);
-						file.name=file.name.replace(/</g,"&lt;").replace(/>/g,"&gt;");
-						currentAi=file.name;
-						ais[currentAI]=new AI(currentAi,file);
-						$(this).dialog("close");
-						$("#userStart").dialog("open","minWidth",350);
-					}
-					$(this).append("Loading...");
-					reader.readAsText($("#aiFile")[0].files[0]);
-				}else if ($(this).find(".ui-tabs-panel:not(.ui-tabs-hide)").index()==1) {
-					currentAI=$("#new-ai-name").val().replace(/</g,"&lt;").replace(/>/g,"&gt;")||"New Ai bot";
-					ais[currentAI]=new Ai($("#new-ai-name").val());
-					$(this).dialog("close");
-					$("#userStart").dialog("open","minWidth",350);
-				}
-			},
-			/*"talk to Andy instead":{//global ai bot?
-
-			},*/
-		},
-	});
-	$("#userStart").dialog({
-		dialogClass: 'no-close',
-		autoOpen:false,
-		modal:true,
-		minWidth:350,
-		buttons:{
-			"Start Talking to your Bot":function() {
-				usersName=$("#usersName").val().replace(/</g,"&lt;").replace(/>/g,"&gt;")||"Guest";
-				$(this).dialog("close");
-			},
-		},
-	});
-	$(".group").append('<button class="min-tool" title="Minimize or Maximize tooltip"><span class="ui-icon ui-icon-circle-minus"></span></button><button class="x-tool" title="Remove tooltip"><span class="ui-icon ui-icon-circle-close"></span></button>').controlgroup();
-	$(".min-tool").bind("click",function() {
-		$(this).parent().find(".min-tool").toggleClass("ui-corner-all",900)//soften (or harden) edges
-		.siblings().not(".min-tool,select")//find all siblings exclding myself or tools with the same class or things that need to stay hidden
-		.toggle(900);//and toggle their visibility with an animation
-	});
-	$(".x-tool").bind("click",function() {
-		if (!(confirm("Are you sure you want to remove this widget?\n\nWidget purpose: "+$(this).parent().data("purpose")))) return;
-		$(this).parent().hide();
-	});
-	//$("#input").autocomplete({source:enteredCmds});
 	$("#enter").click(function() {
 		if ($("#input").val()!="") {
 			$("#input").val($("#input").val().replace(/"/g,"\\\"").replace(/\\/g,"\\"));
