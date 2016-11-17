@@ -6,7 +6,7 @@
 		g.Ai=Ai;
 	}
 })(this,(function() {
-	var Ai=function(name,obj/*opt*/) {
+	var Ai=function(name,obj) {
 		/*
 		There are 2 ways two run this function
 
@@ -18,9 +18,9 @@
 		if  (arguments.length==0||arguments.length>2) throw "The Ai constructor requires 1-2 values passed";
 		obj=obj||{};//prevent bugs
 		this.name=name||"AIR bot";
-		this._defaultResp={};
+		this.defaultResponces={};
 		this._allresps=[];
-		this.types={
+		this.inputTypes={
 			string:function(str) {return str},
 		};
 		
@@ -36,7 +36,7 @@
 			throw "The name for your Ai bot must be a string";
 		}*/
 	};
-	Ai.prototype.reactTo=function(input,name,type) {
+	Ai.prototype.reactTo=function(input,type) {
 		/*
 		How to use this function:
 
@@ -47,17 +47,18 @@
 		type=type||typeof input;
 
 		//check varubles
-		if (typeof this.types[type]==="undefined") {
+		if (typeof this.inputTypes[type]==="undefined") {
 			throw "Invalid type";
 		}else{
-			input=this.types[type](input);
+			input=this.inputTypes[type](input);
 		}
 
 		//apply default responce
-		if (this._defaultResp.hasOwnProperty(input)) output+=this._defaultResp[input];
+		if (this.defaultResponces.hasOwnProperty(input)) output+=this.defaultResponces[input];
 		//edit output(remove negetaive phrases)
+		
 		//act
-		this._defaultResp[input]=output;//add as responce
+		this.defaultResponces[input]=output;//add as responce
 		return output;//return value for further prossesing
 	}
 	Ai.prototype.punish=function(){
