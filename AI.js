@@ -15,7 +15,7 @@
 				//values here
 			});//2nd
 		*/
-		if  (arguments.length==0||arguments.length>2) throw "The Ai constructor requires 1-2 values passed";
+		if  (arguments.length===0||arguments.length>2) throw "The Ai constructor requires 1-2 values passed";
 		obj=obj||{};//prevent bugs
 		this.name=name;
 		this.defaultResponces={
@@ -25,7 +25,7 @@
 		this.words=[];
 		this.context=[];
 		this.inputTypes={
-			string:function(str) {return str},
+			string:function(str) {return str;},
 		};
 		
 		for (var i in this) {
@@ -46,7 +46,7 @@
 				var myAi= new Ai("My AI's name");
 				var aisOutput=myAi.reactTo("input","usersname","type of input(optional but will use the typeof operator to determine this value if not specified)");
 			*/
-			var output="",//set varubles
+			var output="";//set varubles
 			type=type||typeof input;
 
 			//check varubles
@@ -82,13 +82,13 @@
 			//add to memory
 			this.defaultResponces[input]=output;
 			this.lastResponce=output;//For the punish and reward functions
-			for (var len=1; len<output.length; len++) {
+			for (len=1; len<output.length; len++) {
 				if (!this.words[len]) {
 					this.words[len]={};
 					this.context[len]={};
 				}
-				for (var index=0; index<(output.length-len); index++) {
-					var word=output.substr(index,len);
+				for (index=0; index<(output.length-len); index++) {
+					word=output.substr(index,len);
 					if(!this.words[len][word]) {
 						this.words[len][word]=0;//value indicates how "good" a word is
 						this.context[len][word]={
@@ -135,4 +135,4 @@
 		};
 	};
 	return Ai;
-})())
+})());
