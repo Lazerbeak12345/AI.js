@@ -17,9 +17,13 @@
 		*/
 		if  (arguments.length==0||arguments.length>2) throw "The Ai constructor requires 1-2 values passed";
 		obj=obj||{};//prevent bugs
-		this.name=name||"AIR bot";
-		this.defaultResponces={};
-		this._allresps=[];
+		this.name=name;
+		this.defaultResponces={
+			"How are you?":"If you got this message, I am at least 25% operational.",
+		};
+		this.lastResponce="";
+		this.words=[];
+		this.context=[];
 		this.inputTypes={
 			string:function(str) {return str},
 		};
@@ -35,37 +39,100 @@
 		/*if (typeof this.name!=="string") {
 			throw "The name for your Ai bot must be a string";
 		}*/
+		this.respondTo=function(input,type) {
+			/*
+			How to use this function:
+
+				var myAi= new Ai("My AI's name");
+				var aisOutput=myAi.reactTo("input","usersname","type of input(optional but will use the typeof operator to determine this value if not specified)");
+			*/
+			var output="",//set varubles
+			type=type||typeof input;
+
+			//check varubles
+			if (typeof this.inputTypes[type]==="undefined") {
+				throw "Invalid type";
+			}else{
+				input=this.inputTypes[type](input);
+			}
+
+			//apply default responce
+			if (this.defaultResponces.hasOwnProperty(input)) output+=this.defaultResponces[input];
+			//find bad output
+			var list=[];
+			for (var len=output.length; len>=1; len--) {
+				if (!this.words[len]) this.words[len]={};
+				for (var index=0; index<(output.length-len); index++) {
+					var word=output.substr(index,len);
+					if(!this.words[len][word]) this.words[len][word]=0;//value indicates how "good" a word is
+					for(var index2=0; index2<len; index2++) {
+						if (!list[index+index2]) list[index+index2]=0;
+						if (word>-1) {
+							list[index+index2]++;
+						}else{
+							list[index+index2]--;
+						}
+					}
+				}
+			}
+			//change bad output to good output
+			for(var index=0; index<list.length; index++){
+				
+			}
+			//add to memory
+			this.defaultResponces[input]=output;
+			this.lastResponce=output;//For the punish and reward functions
+			for (var len=1; len<output.length; len++) {
+				if (!this.words[len]) {
+					this.words[len]={};
+					this.context[len]={};
+				}
+				for (var index=0; index<(output.length-len); index++) {
+					var word=output.substr(index,len);
+					if(!this.words[len][word]) {
+						this.words[len][word]=0;//value indicates how "good" a word is
+						this.context[len][word]={
+							before:output.substr(index-len,len),
+							after:output.substr(index+len,len),
+						};
+					}
+				}
+			}
+			//act
+			return output;
+		};
+		this.punish=function(str){
+			if (typeof str=="undefined") {
+				str=this.lastResponce;
+			}
+			for (var len=1; len<str.length; len++) {
+				if (!this.words[len]) this.words[len]={};
+				for (var index=0; index<(str.length-len); index++) {
+					var word=str.substr(index,len);
+					if(!this.words[len][word]) {
+						this.words[len][word]=0;//value indicates how "good" a word is
+					}else{
+						this.words[len][word]--;
+					}
+				}
+			}
+		};
+		this.reward=function(str){
+			if (typeof str=="undefined") {
+				str=this.lastResponce;
+			}
+			for (var len=1; len<str.length; len++) {
+				if (!this.words[len]) this.words[len]={};
+				for (var index=0; index<(str.length-len); index++) {
+					var word=str.substr(index,len);
+					if(!this.words[len][word]) {
+						this.words[len][word]=0;//value indicates how "good" a word is
+					}else{
+						this.words[len][word]++;
+					}
+				}
+			}
+		};
 	};
-	Ai.prototype.reactTo=function(input,type) {
-		/*
-		How to use this function:
-
-			var myAi= new Ai("My AI's name");
-			var aisOutput=myAi.reactTo("input","usersname","type of input(optional but will use the typeof operator to determine this value if not specified)");
-		*/
-		var output="",//set varubles
-		type=type||typeof input;
-
-		//check varubles
-		if (typeof this.inputTypes[type]==="undefined") {
-			throw "Invalid type";
-		}else{
-			input=this.inputTypes[type](input);
-		}
-
-		//apply default responce
-		if (this.defaultResponces.hasOwnProperty(input)) output+=this.defaultResponces[input];
-		//edit output(remove negetaive phrases)
-		
-		//act
-		this.defaultResponces[input]=output;//add as responce
-		return output;//return value for further prossesing
-	}
-	Ai.prototype.punish=function(){
-		//?
-	}
-	Ai.prototype.reward=function(){
-		//?
-	}
 	return Ai;
 })())
