@@ -59,11 +59,11 @@
 			//apply default responce
 			if (this.defaultResponces.hasOwnProperty(input)) output+=this.defaultResponces[input];
 			//find bad output
-			var list=[];
-			for (var len=output.length; len>=1; len--) {
+			var list=[],len,index,word;
+			for (len=output.length; len>=1; len--) {
 				if (!this.words[len]) this.words[len]={};
-				for (var index=0; index<(output.length-len); index++) {
-					var word=output.substr(index,len);
+				for (index=0; index<(output.length-len); index++) {
+					word=output.substr(index,len);
 					if(!this.words[len][word]) this.words[len][word]=0;//value indicates how "good" a word is
 					for(var index2=0; index2<len; index2++) {
 						if (!list[index+index2]) list[index+index2]=0;
@@ -88,7 +88,7 @@
 					this.context[len]={};
 				}
 				for (index=0; index<(output.length-len); index++) {
-					var word=output.substr(index,len);
+					word=output.substr(index,len);
 					if(!this.words[len][word]) {
 						this.words[len][word]=0;//value indicates how "good" a word is
 						this.context[len][word]={
