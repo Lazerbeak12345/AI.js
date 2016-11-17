@@ -76,7 +76,7 @@
 				}
 			}
 			//change bad output to good output
-			for(var index=0; index<list.length; index++){
+			for(index=0; index<list.length; index++){
 				
 			}
 			//add to memory
@@ -88,7 +88,7 @@
 					this.context[len]={};
 				}
 				for (index=0; index<(output.length-len); index++) {
-					word=output.substr(index,len);
+					var word=output.substr(index,len);
 					if(!this.words[len][word]) {
 						this.words[len][word]=0;//value indicates how "good" a word is
 						this.context[len][word]={
