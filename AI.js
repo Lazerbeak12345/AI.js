@@ -77,7 +77,10 @@
 			}
 			//change bad output to good output
 			for(index=0; index<list.length; index++){
-				
+				if (((list[index]+list[index+1]+list[index+2])/3)<=-1) {
+					word=list.substr(index,3);
+					
+				}
 			}
 			//add to memory
 			this.defaultResponces[input]=output;
@@ -92,8 +95,8 @@
 					if(!this.words[len][word]) {
 						this.words[len][word]=0;//value indicates how "good" a word is
 						this.context[len][word]={
-							before:output.substr(index-len,len),
-							after:output.substr(index+len,len),
+							before:[output.substr(index-len,len)],
+							after:[output.substr(index+len,len)],
 						};
 					}
 				}
