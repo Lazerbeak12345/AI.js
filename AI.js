@@ -27,15 +27,15 @@
 		this.inputTypes={
 			string:function(str) {return str;},
 		};
-		
-		for (var i in this) {
-			if (typeof this[i]=="object") {
-				for (var ii in obj[i]) {
-					this[i][ii]=obj[i][ii];
-				}
-			}else this[i]=obj[i];//overwrite with obj
+		if(typeof obj!="undefined") {
+			for (var i in this) {
+				if (typeof this[i]!="undefined") {
+					for (var ii in obj[i]) {
+						this[i][ii]=obj[i][ii];
+					}
+				}else this[i]=obj[i];//overwrite with obj
+			}
 		}
-
 		/*if (typeof this.name!=="string") {
 			throw "The name for your Ai bot must be a string";
 		}*/
