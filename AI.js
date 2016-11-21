@@ -6,6 +6,32 @@
 		g.Ai=Ai;
 	}
 })(this,(function() {
+	function lint(str){
+		//find bad output
+		var list=[],len,index,word;
+		for (len=output.length; len>=1; len--) {
+			if (!this.words[len]) this.words[len]={};
+			for (index=0; index<(output.length-len); index++) {
+				word=output.substr(index,len);
+				if(!this.words[len][word]) this.words[len][word]=0;//value indicates how "good" a word is
+				for(var index2=0; index2<len; index2++) {
+					if (!list[index+index2]) list[index+index2]=0;
+					if (word>-1) {
+						list[index+index2]++;
+					}else{
+						list[index+index2]--;
+					}
+				}
+			}
+		}
+		//change bad output to good output
+		for(index=0; index<list.length; index++){
+			if (((list[index]+list[index+1]+list[index+2])/3)<=-1) {
+				word=list.substr(index,3);
+
+			}
+		}
+	}
 	var Ai=function(name,obj) {
 		/*
 		There are 2 ways two run this function
@@ -58,30 +84,8 @@
 
 			//apply default responce
 			if (this.defaultResponces.hasOwnProperty(input)) output+=this.defaultResponces[input];
-			//find bad output
-			var list=[],len,index,word;
-			for (len=output.length; len>=1; len--) {
-				if (!this.words[len]) this.words[len]={};
-				for (index=0; index<(output.length-len); index++) {
-					word=output.substr(index,len);
-					if(!this.words[len][word]) this.words[len][word]=0;//value indicates how "good" a word is
-					for(var index2=0; index2<len; index2++) {
-						if (!list[index+index2]) list[index+index2]=0;
-						if (word>-1) {
-							list[index+index2]++;
-						}else{
-							list[index+index2]--;
-						}
-					}
-				}
-			}
-			//change bad output to good output
-			for(index=0; index<list.length; index++){
-				if (((list[index]+list[index+1]+list[index+2])/3)<=-1) {
-					word=list.substr(index,3);
-					
-				}
-			}
+			//lint
+			output=lint.call(this,output)
 			//add to memory
 			this.defaultResponces[input]=output;
 			this.lastResponce=output;//For the punish and reward functions
