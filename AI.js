@@ -27,10 +27,16 @@
 		//change bad output to good output
 		for(index=0; index<list.length; index++){
 			if (((list[index]+list[index+1]+list[index+2])/3)<=-1) {
-				word=list.substr(index,3);
-				var average=(word[0]+word[1]+word[2])/3;
+				word=str.substr(index,3);
+				for(var i in this.context[3][word]) {
+					if ()
+				}
+				if (word===str.substr(index,3)) {
+					word=(Math.random()*(1<<8)).toString(36).replace(/[0-9]|\./g,"").slice(-3);
+				}
 			}
 		}
+		return str;
 	}
 	var Ai=function(name,obj) {
 		/*
@@ -72,7 +78,7 @@
 				var myAi= new Ai("My AI's name");
 				var aisOutput=myAi.reactTo("input","usersname","type of input(optional but will use the typeof operator to determine this value if not specified)");
 			*/
-			var output="";//set varubles
+			var output="",len,index,word;//set varubles
 			type=type||typeof input;
 
 			//check varubles
@@ -102,6 +108,9 @@
 							before:[output.substr(index-len,len)],
 							after:[output.substr(index+len,len)],
 						};
+					}else{
+						this.context[len][word].before.push(output.substr(index-len,len));
+						this.context[len][word].after.push(output.substr(index+len,len));
 					}
 				}
 			}
