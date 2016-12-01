@@ -6,6 +6,15 @@
 		g.Ai=Ai;
 	}
 })(this,(function() {
+	function randomString(len, an){//comes from http://stackoverflow.com/a/27872144
+		an = an&&an.toLowerCase();
+		var str="", i=0, min=an=="a"?10:0, max=an=="n"?10:62;
+		for(;i++<len;){
+			var r = Math.random()*(max-min)+min <<0;
+			str += String.fromCharCode(r+=r>9?r<36?55:61:48);
+		}
+		return str;
+	}
 	function lint(str){
 		//find bad output
 		var list=[],len,index,word;
@@ -29,10 +38,10 @@
 			if (((list[index]+list[index+1]+list[index+2])/3)<=-1) {
 				word=str.substr(index,3);
 				for(var i in this.context[3][word]) {
-					if ()
+					//if ()
 				}
 				if (word===str.substr(index,3)) {
-					word=(Math.random()*(1<<8)).toString(36).replace(/[0-9]|\./g,"").slice(-3);
+					word=randomString(3);
 				}
 			}
 		}
