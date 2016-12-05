@@ -101,7 +101,7 @@
 			}
 
 			//apply default responce
-			if (this.defaultResponces.hasOwnProperty(input)) output+=this.defaultResponces[input];
+			if (this.defaultResponces.hasOwnProperty(input)) output=this.defaultResponces[input];
 			//lint
 			output=lint.call(this,output);
 			//add to memory
