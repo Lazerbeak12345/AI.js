@@ -15,7 +15,8 @@
 		}
 		return str;
 	}
-	function lint(str){
+	function lint(str,l){
+		var elen=typeof l!="undefined"?l:str.length-1;
 		//find bad output
 		var list=[],len,index,word;
 		for (len=str.length; len>=1; len--) {
@@ -35,17 +36,19 @@
 		}
 		//change bad output to good output
 		for(index=0; index<list.length; index++){
-			if (((list[index]+list[index+1]+list[index+2])/3)<=-1) {
-				word=str.substr(index,3);
-				for(var i in this.context[3][word]) {
-					//if ()
-				}
-				if (word===str.substr(index,3)) {
-					word=randomString(3);
-				}
+			var tot=0;
+			for(var index2=0,slice=list.substr(index,elen); index2<slice.length; index2++) {
+				tot+=slice[index2];//Find avarage of how "good" the "word" is at index with a length of elen
+			}
+			if ((tot/elen)<0) {//if word is "bad"
+				word=randomString(elen);
 			}
 		}
-		return str;
+		if (elen>=1) {
+			return str;
+		}else{
+			return lint(str,elen-1);
+		}
 	}
 	var Ai=function(name,obj) {
 		/*
