@@ -37,7 +37,7 @@
 		//change bad output to good output
 		for(index=0; index<list.length; index++){
 			var tot=0;
-			for(var index2=0,slice=list.substr(index,elen); index2<slice.length; index2++) {
+			for(var index2=0,slice=list.slice(index,index+elen); index2<slice.length; index2++) {
 				tot+=slice[index2];//Find avarage of how "good" the "word" is at index with a length of elen
 			}
 			if ((tot/elen)<0) {//if word is "bad"
