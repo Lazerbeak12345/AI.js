@@ -83,7 +83,7 @@
 		/*if (typeof this.name!=="string") {
 			throw "The name for your Ai bot must be a string";
 		}*/
-		this.respondTo=function(input,type) {
+		this.reactTo=function(input,type) {
 			/*
 			How to use this function:
 
