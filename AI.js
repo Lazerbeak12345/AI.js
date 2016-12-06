@@ -6,7 +6,17 @@
 		g.Ai=Ai;
 	}
 })(this,(function() {
-	function lint(str){
+	function randomString(len, an){//comes from http://stackoverflow.com/a/27872144
+		an = an&&an.toLowerCase();
+		var str="", i=0, min=an=="a"?10:0, max=an=="n"?10:62;
+		for(;i++<len;){
+			var r = Math.random()*(max-min)+min <<0;
+			str += String.fromCharCode(r+=r>9?r<36?55:61:48);
+		}
+		return str;
+	}
+	function lint(str,l){
+		var elen=typeof l!="undefined"?l:str.length-1,index2;
 		//find bad output
 		var list=[],len,index,word;
 		for (len=str.length; len>=1; len--) {
@@ -14,7 +24,7 @@
 			for (index=0; index<(str.length-len); index++) {
 				word=str.substr(index,len);
 				if(!this.words[len][word]) this.words[len][word]=0;//value indicates how "good" a word is
-				for(var index2=0; index2<len; index2++) {
+				for(index2=0; index2<len; index2++) {
 					if (!list[index+index2]) list[index+index2]=0;
 					if (word>-1) {
 						list[index+index2]++;
@@ -26,17 +36,19 @@
 		}
 		//change bad output to good output
 		for(index=0; index<list.length; index++){
-			if (((list[index]+list[index+1]+list[index+2])/3)<=-1) {
-				word=str.substr(index,3);
-				for(var i in this.context[3][word]) {
-					if ()
-				}
-				if (word===str.substr(index,3)) {
-					word=(Math.random()*(1<<8)).toString(36).replace(/[0-9]|\./g,"").slice(-3);
-				}
+			var tot=0;
+			for(index2=0,slice=list.slice(index,index+elen); index2<slice.length; index2++) {
+				tot+=slice[index2];//Find avarage of how "good" the "word" is at index with a length of elen
+			}
+			if ((tot/elen)<0) {//if word is "bad"
+				word=randomString(elen);
 			}
 		}
-		return str;
+		if (elen>=1) {
+			return str;
+		}else{
+			return lint(str,elen-1);
+		}
 	}
 	var Ai=function(name,obj) {
 		/*
@@ -71,7 +83,7 @@
 		/*if (typeof this.name!=="string") {
 			throw "The name for your Ai bot must be a string";
 		}*/
-		this.respondTo=function(input,type) {
+		this.reactTo=function(input,type) {
 			/*
 			How to use this function:
 
@@ -89,7 +101,7 @@
 			}
 
 			//apply default responce
-			if (this.defaultResponces.hasOwnProperty(input)) output+=this.defaultResponces[input];
+			if (this.defaultResponces.hasOwnProperty(input)) output=this.defaultResponces[input];
 			//lint
 			output=lint.call(this,output);
 			//add to memory
