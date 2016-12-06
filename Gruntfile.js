@@ -3,17 +3,18 @@ module.exports = function(grunt) {
 		jshint: {
 			all: ['Gruntfile.js', 'AI.js', 'strongEval.js']
 		},
-		/*min: {// see http://stackoverflow.com/a/13749226
-			js: {
-				src: 'AI.js',
-				dest: 'AI.min.js'
+		uglify:{
+			my_target: {
+				files: {
+					'AI.min.js': ['AI.js'],
+				}
 			}
-		},*/
+		},
 	});
 	
 	grunt.loadNpmTasks('grunt-contrib-jshint');
-	//grunt.loadNpmTasks('grunt-min');
-	grunt.registerTask('default', ['jshint'/*,'min'*/]);
+	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.registerTask('default', ['jshint']);
 	
 	
 };
