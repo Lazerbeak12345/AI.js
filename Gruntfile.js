@@ -1,4 +1,4 @@
-var Ai=require("AI.js");
+var Ai=require("./AI.js");
 var bot=new Ai("Andy");
 
 module.exports = function(grunt) {
