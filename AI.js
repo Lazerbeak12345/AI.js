@@ -1,7 +1,6 @@
 (function(g,Ai) {
-	if (typeof exports!="undefined") {
-		//exports.strongEval=strongEval;
-		exports=Ai;
+	if (typeof module!="undefined") {
+		module.exports=Ai;
 	}else{
 		g.Ai=Ai;
 	}
