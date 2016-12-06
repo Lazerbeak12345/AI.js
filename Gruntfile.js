@@ -21,6 +21,6 @@ module.exports = function(grunt) {
 		grunt.log.writeln('} "How are you?"');
 		grunt.log.writeln('} "'+bot.reactTo("How are you?")+'"');
 	});
-	grunt.registerTask('default', ['jshint'/*,'uglify'*/]);
+	grunt.registerTask('default', ['jshint','Talk to Ai']);
 		
 };
