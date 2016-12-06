@@ -18,6 +18,7 @@
 	function lint(str,l){
 		//define varubles
 		var elen=typeof l!="undefined"?l:str.length-1,index2;
+		elen=3;
 		//find bad output
 		var list=[],len,index,word;
 		for (len=str.length; len>=1; len--) {
@@ -48,7 +49,8 @@
 		if (elen>=1) {
 			return str;
 		}else{
-			return lint(str,elen-2);
+			//return lint(str,elen-2);//has stack problems. will want to use a for loop instead
+			return str;
 		}
 	}
 	var Ai=function(name,obj) {
