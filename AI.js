@@ -1,7 +1,6 @@
 (function(g,Ai) {
-	if (typeof exports!="undefined") {
-		//exports.strongEval=strongEval;
-		exports=Ai;
+	if (typeof module!="undefined") {
+		module.exports=Ai;
 	}else{
 		g.Ai=Ai;
 	}
@@ -16,7 +15,9 @@
 		return str;
 	}
 	function lint(str,l){
+		//define varubles
 		var elen=typeof l!="undefined"?l:str.length-1,index2;
+		elen=3;
 		//find bad output
 		var list=[],len,index,word;
 		for (len=str.length; len>=1; len--) {
@@ -38,7 +39,7 @@
 		for(index=0; index<list.length; index++){
 			var tot=0;
 			for(index2=0,slice=list.slice(index,index+elen); index2<slice.length; index2++) {
-				tot+=slice[index2];//Find avarage of how "good" the "word" is at index with a length of elen
+				tot+=slice[index2];//Find average of how "good" the "word" is at index with a length of elen
 			}
 			if ((tot/elen)<0) {//if word is "bad"
 				word=randomString(elen);
@@ -47,7 +48,8 @@
 		if (elen>=1) {
 			return str;
 		}else{
-			return lint(str,elen-1);
+			//return lint(str,elen-2);//has stack problems. will want to use a for loop instead
+			return str;
 		}
 	}
 	var Ai=function(name,obj) {

@@ -37,7 +37,7 @@ function download(filename, text) {
 var enteredCmds=[],
 aiFunctions={},
 userFunctions={},
-currentAI="",
+currentAI="Andy",
 usersName="";
 userFunctions.say=function(text) {
 	text=text.replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/^\s*/g,"").replace(/\s*$/g,"");
@@ -76,6 +76,7 @@ aiFunctions.say=function(text) {
 	emojify.run($("#output p")[$("#output p").length-2]);
 };
 var ais={};
+ais[currentAI]=new Ai(currentAI);
 $(function() {
 	$("#output").resizable({
 		maxHeight:$(window).height()/2,
@@ -112,7 +113,7 @@ $(function() {
 			$("#output").attr("title","");
 			enteredCmds.push($("#input").val());
 			strongEval("say(\""+$("#input").val()+"\");",userFunctions);
-			strongEval(ais[currentAI].reactTo("say(\""+$("#input").val()+"\");"),aiFunctions);
+			strongEval("say(\""+ais[currentAI].reactTo($("#input").val())+"\");",aiFunctions);
 			//$("#input").autocomplete({source:enteredCmds});
 		}
 		$("#input").val("");
