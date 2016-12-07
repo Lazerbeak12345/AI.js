@@ -38,7 +38,7 @@ var enteredCmds=[],
 aiFunctions={},
 userFunctions={},
 currentAI="Andy",
-usersName="";
+usersName="User";
 userFunctions.say=function(text) {
 	text=text.replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/^\s*/g,"").replace(/\s*$/g,"");
 	$("#output>div").not(".ui-resizable-handle").css({"overflow":"scroll","overflow-x":"hidden"}).find("tbody").append("<tr style='min-height:1em'><td style='height:1px'></td><td style='float:right'><p class='userText ui-corner-left ui-corner-top'>"+text+"</p><td/><td style='vertical-align: bottom;'><p class='userName'>"+usersName+"</p></td></tr>");
