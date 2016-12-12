@@ -14,43 +14,9 @@
 		}
 		return str;
 	}
-	function lint(str,l){
-		//define varubles
-		var elen=typeof l!="undefined"?l:str.length-1,index2;
-		elen=3;
-		//find bad output
-		var list=[],len,index,word;
-		for (len=str.length; len>=1; len--) {
-			if (!this.words[len]) this.words[len]={};
-			for (index=0; index<(str.length-len); index++) {
-				word=str.substr(index,len);
-				if(!this.words[len][word]) this.words[len][word]=0;//value indicates how "good" a word is
-				for(index2=0; index2<len; index2++) {
-					if (!list[index+index2]) list[index+index2]=0;
-					if (word>-1) {
-						list[index+index2]++;
-					}else{
-						list[index+index2]--;
-					}
-				}
-			}
-		}
-		//change bad output to good output
-		for(index=0; index<list.length; index++){
-			var tot=0;
-			for(index2=0,slice=list.slice(index,index+elen); index2<slice.length; index2++) {
-				tot+=slice[index2];//Find average of how "good" the "word" is at index with a length of elen
-			}
-			if ((tot/elen)<0) {//if word is "bad"
-				word=randomString(elen);
-			}
-		}
-		if (elen>=1) {
-			return str;
-		}else{
-			//return lint(str,elen-2);//has stack problems. will want to use a for loop instead
-			return str;
-		}
+	function lint(str){
+		//var items=[],
+		return str;
 	}
 	var Ai=function(name,obj) {
 		/*
