@@ -19,7 +19,8 @@
 		for(len=1;len<str.length;len++){//each possable length of part
 			//find bad parts and remove them
 			for(index=0; index<(str.length-len); index++) {
-				part=str.substr(index,len), partVal=0;
+				part=str.substr(index,len);
+				partVal=0;
 				for(index2 in part) {
 					if(typeof this.word[len]=="undefined") this.word[len]={};
 					if(typeof this.word[len][part]=="undefined") this.word[len][part]=0;
