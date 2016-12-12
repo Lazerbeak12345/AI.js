@@ -15,7 +15,11 @@
 		return str;
 	}
 	function lint(str){
-		//var items=[],
+		var len;
+		for(len=1;len<str.length;len++){//each possable length of part
+			//find bad parts and remove them
+		}
+		//return the clean string
 		return str;
 	}
 	var Ai=function(name,obj) {
