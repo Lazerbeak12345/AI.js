@@ -15,9 +15,21 @@
 		return str;
 	}
 	function lint(str){
-		var len;
+		var len,index,index2,part,partVals=[],partVal=0;
 		for(len=1;len<str.length;len++){//each possable length of part
 			//find bad parts and remove them
+			for(index=0; index<(str.length-len); index++) {
+				part=str.substr(index,len), partVal=0;
+				for(index2 in part) {
+					if(typeof this.word[len]="undefined") this.word[len]={};
+					if(typeof this.word[len][part]="undefined") this.word[len][part]=0;
+					partVal+=this.word[len][part];
+				}
+				partVal/=len;
+				if(partVal<0) {//if part of phrase is bad
+				
+				}
+			}
 		}
 		//return the clean string
 		return str;
