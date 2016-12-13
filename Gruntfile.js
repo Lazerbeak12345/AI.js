@@ -13,9 +13,9 @@ module.exports = function(grunt) {
 		grunt.log.writeln('(How are you?)>');
 		var ans=bot.reactTo("How are you?");
 		if (ans.includes("operational")||ans.includes("ok")||ans.includes("fine")||ans.includes("good")) {
-			grunt.log.ok(["<("+ans+")"]);
+			grunt.log.oklns("<("+ans+")");
 		}else{
-			grunt.log.error(["<("+ans+")"]);
+			grunt.log.errorlns("<("+ans+")");
 		}
 	});
 	grunt.registerTask('default', ['jshint','Talk to AI']);
