@@ -11,7 +11,7 @@ module.exports = function(grunt) {
 				stoponerror: false,
 				relaxerror: []
 			},
-			files: ['**.html']
+			files: ['*.html','**/*.html']
 		}
 	});	
 	grunt.loadNpmTasks('grunt-contrib-jshint');
