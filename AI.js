@@ -22,7 +22,7 @@
 				part=str.substr(index,len);
 				partVal=0;
 				for(index2=0; index2<part.length; index2++) {
-					console.log("@Outside len="+len+" index="+index+" part="+part+" partVal="+partVal+" index2="+index2);
+					console.log("@Outside len="+len+" index="+index+" part="+part+" partVal="+partVal+" index2="+index2+" this.word=",this.word);
 					if(typeof this.word[len]=="undefined") {
 						console.log("@Inside len="+len+" index="+index+" part="+part+" partVal="+partVal+" index2="+index2);
 						this.word[len]={};
