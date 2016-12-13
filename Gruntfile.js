@@ -11,7 +11,12 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.registerTask('Talk to AI', 'Preforms a status check for the AI by asking the bot how it is doing.', function() {
 		grunt.log.writeln('(How are you?)>');
-		grunt.log.writeln('<('+bot.reactTo("How are you?")+')');
+		var ans=bot.reactTo("How are you?");
+		if (ans.includes("operational")||ans.includes("ok")||ans.includes("fine")||ans.includes("good")) {
+			grunt.log.ok(["<("+ans+")"]);
+		}else{
+			grunt.log.error(["<("+ans+")"]);
+		}
 	});
 	grunt.registerTask('default', ['jshint','Talk to AI']);
 		
