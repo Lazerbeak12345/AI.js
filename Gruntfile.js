@@ -1,4 +1,4 @@
-	var Ai=require("./AI.js");
+var Ai=require("./AI.js");
 var bot=new Ai("Andy");
 
 module.exports = function(grunt) {
@@ -11,7 +11,7 @@ module.exports = function(grunt) {
 				stoponerror: false,
 				relaxerror: []
 			},
-			files: ['*.html','**/*.html']
+			files: ['index.html','demo/index.html']
 		}
 	});	
 	grunt.loadNpmTasks('grunt-contrib-jshint');
