@@ -22,15 +22,13 @@
 				part=str.substr(index,len);
 				partVal=0;
 				for(index2=0; index2<part.length; index2++) {
-					console.log("@Outside len="+len+" index="+index+" part="+part+" partVal="+partVal+" index2="+index2+" this.word=",this.word);
-					if(typeof this.word[len]=="undefined") {
-						console.log("@Inside len="+len+" index="+index+" part="+part+" partVal="+partVal+" index2="+index2);
-						this.word[len]={};
+					if(typeof this.words[len]=="undefined") {
+						this.words[len]={};
 					}
-					if(typeof this.word[len][part]=="undefined") {
-						this.word[len][part]=0;
+					if(typeof this.words[len][part]=="undefined") {
+						this.words[len][part]=0;
 					}
-					partVal+=this.word[len][part];
+					partVal+=this.words[len][part];
 				}
 				partVal/=len;
 				if(partVal<0) {//if part of phrase is bad
