@@ -41,7 +41,7 @@
 					for(index2 in this.context[len][part].before){//all before parts
 						qWord=this.context[len][part].before[index2];
 						if(qWord.length<1){
-							qWord=randomString(3,"an")
+							qWord=randomString(3,"an");
 						}
 						if(typeof this.words[qWord.length]==="undefined"){
 							this.words[qWord.length]={};
@@ -58,7 +58,7 @@
 					for(index2 in this.context[bestBefore.length][bestBefore].after){//all before parts
 						qWord=this.context[bestBefore.length][bestBefore].after[index2];
 						if(qWord.length<1){
-							qWord=randomString(3,"an")
+							qWord=randomString(3,"an");
 						}
 						if(typeof this.words[qWord.length]==="undefined"){
 							this.words[qWord.length]={};
