@@ -15,9 +15,59 @@
 		return str;
 	}
 	function lint(str){
-		var len;
-		for(len=1;len<str.length;len++){//each possable length of part
-			//find bad parts and remove them
+		var bestBefore="",bestBeforeVal=0,len=0,index=0,index2=0,part="",newPart="",newPartVal=0,qWord;
+		for(len=str.length;len>=3;len--){//each possable length of part>=3
+			//find bad parts
+			for(index=0; index<(str.length-len); index++) {
+				part=str.substr(index,len);
+				if(typeof this.words[len]==="undefined"){
+					this.words[len]={};
+				}
+				if(typeof this.context[len]==="undefined"){
+					this.context[len]={};
+				}
+				if(typeof this.words[len][part]==="undefined"){
+					this.words[len][part]=0;
+				}
+				if(typeof this.context[len][part]==="undefined"){
+					this.context[len][part]={
+						before:[str.substr(0,index)],
+						after:[str.slice(index+len)],
+					};
+				}
+				if(this.words[len][part]<0){//if part is bad
+					//replace bad parts with alternative if any. Otherwise replace them with a random string
+					for(index2 in this.context[len][part].before){//all before parts
+						qWord=this.context[len][part].before[index2];
+						if(typeof this.words[qWord.length]==="undefined"){
+							this.words[qWord.length]={};
+						}
+						if(typeof this.words[qWord.length][part]==="undefined"){
+							this.words[qWord.length][qWord]=0;
+						}
+						if(this.words[qWord.length][qWord]>bestBeforeVal){//if this "question word" is the best
+							bestBeforeVal=this.words[qWord.length][qWord];
+							bestBefore=qWord;
+						}
+					}
+					//by now the best "before part" has been determined
+					for(index2 in this.context[bestBefore.length][bestBefore].after){//all before parts
+						qWord=this.context[bestBefore.length][bestBefore].after[index2];
+						if(typeof this.words[qWord.length]==="undefined"){
+							this.words[qWord.length]={};
+						}
+						if(typeof this.words[qWord.length][part]==="undefined"){
+							this.words[qWord.length][qWord]=0;
+						}
+						if(this.words[qWord.length][qWord]>newPartVal){//if this "question word" is the best
+							newPartVal=this.words[qWord.length][qWord];
+							newPart=qWord;
+						}
+					}
+					//by now the new part has been found
+					str=[str.substr(0,index),newPart,str.slice(index+len)].join("");
+				}
+			}
 		}
 		//return the clean string
 		return str;
