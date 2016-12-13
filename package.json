@@ -5,7 +5,7 @@
 		"grunt": "1.0.1",
 		"grunt-cli": "1.2.0",
 		"grunt-contrib-jshint": "1.0.0",
-		"grunt-bootlint":"0.10.1",
+		"grunt-bootlint":"0.10.1"
 	},
 	"scripts": {
 		"test": "grunt --verbose"
