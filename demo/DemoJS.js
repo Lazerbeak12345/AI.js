@@ -111,10 +111,8 @@ $(function() {
 		if ($("#input").val()!="") {
 			$("#input").val($("#input").val().replace(/"/g,"\\\"").replace(/\\/g,"\\"));
 			$("#output").attr("title","");
-			enteredCmds.push($("#input").val());
-			strongEval("say(\""+$("#input").val()+"\");",userFunctions);
-			strongEval("say(\""+ais[currentAI].reactTo($("#input").val())+"\");",aiFunctions);
-			//$("#input").autocomplete({source:enteredCmds});
+			userFunctions.say($("#input").val());
+			aiFunctions.say(ais[currentAI].reactTo($("#input").val()));
 		}
 		$("#input").val("");
 	});
