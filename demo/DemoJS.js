@@ -40,40 +40,14 @@ userFunctions={},
 currentAI="Andy",
 usersName="User";
 userFunctions.say=function(text) {
-	text=text.replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/^\s*/g,"").replace(/\s*$/g,"");
+	text=emojione.toImage(text.replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/^\s*/g,"").replace(/\s*$/g,""));
 	$("#output>div").not(".ui-resizable-handle").css({"overflow":"scroll","overflow-x":"hidden"}).find("tbody").append("<tr style='min-height:1em'><td style='height:1px'></td><td style='float:right'><p class='userText ui-corner-left ui-corner-top'>"+text+"</p><td/><td style='vertical-align: bottom;'><p class='userName'>"+usersName+"</p></td></tr>");
 	$("#output>div").not(".ui-resizable-handle").animate({ scrollTop: "+="+$($("#output p")[$("#output p").length-2]).outerHeight()}, 2000);
-	emojify.setConfig({
-	    emojify_tag_type : 'p',           // Only run emojify.js on this element
-	    only_crawl_id    : null,            // Use to restrict where emojify.js applies
-	    img_dir          : '//cdnjs.cloudflare.com/ajax/libs/emojify.js/1.1.0/images/basic/',  // Directory for emoji images
-	    ignored_tags     : {                // Ignore the following tags
-		'SCRIPT'  : 1,
-		'TEXTAREA': 1,
-		'A'       : 1,
-		'PRE'     : 1,
-		'CODE'    : 1
-	    }
-	});
-	emojify.run($("#output p")[$("#output p").length-2]);
 };
 aiFunctions.say=function(text) {
-	text=text.replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/^\s*/g,"").replace(/\s*$/g,"");
+	text=emojione.toImage(text.replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/^\s*/g,"").replace(/\s*$/g,""));
 	$("#output>div").not(".ui-resizable-handle").css({"overflow":"scroll","overflow-x":"hidden"}).find("tbody").append("<tr style='min-height:1em'><td style='vertical-align: bottom;'><p class='aiName'>"+currentAI+"</p></td><td style='float:left'><p class='aiText ui-corner-right ui-corner-top'>"+text+"</p><td/><td style='height:1px'></td></tr>");
 	$("#output>div").not(".ui-resizable-handle").animate({ scrollTop: "+="+$($("#output p")[$("#output p").length-2]).outerHeight()}, 2000);
-	emojify.setConfig({
-	    emojify_tag_type : 'p',           // Only run emojify.js on this element
-	    only_crawl_id    : null,            // Use to restrict where emojify.js applies
-	    img_dir          : '//cdnjs.cloudflare.com/ajax/libs/emojify.js/1.1.0/images/basic/',  // Directory for emoji images
-	    ignored_tags     : {                // Ignore the following tags
-		'SCRIPT'  : 1,
-		'TEXTAREA': 1,
-		'A'       : 1,
-		'PRE'     : 1,
-		'CODE'    : 1
-	    }
-	});
-	emojify.run($("#output p")[$("#output p").length-2]);
 };
 var ais={};
 ais[currentAI]=new Ai(currentAI);
