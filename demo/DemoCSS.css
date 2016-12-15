@@ -37,3 +37,8 @@
 	margin:0px;
 	width:100%;
 }
+#input{
+	position:fixed;
+	bottom:0px;
+	left:0px;
+}
