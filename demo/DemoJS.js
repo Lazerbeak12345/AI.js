@@ -52,20 +52,6 @@ aiFunctions.say=function(text) {
 var ais={};
 ais[currentAI]=new Ai(currentAI);
 $(function() {
-	$("#output").resizable({
-		maxHeight:$(window).height()/2,
-		maxWidth:$(window).width()-30,
-		minHeight:30,
-		minWidth:$(window).width()/4,
-		resize:function(event,ui) {
-			$(this).find("div").not(".ui-resizable-handle").height(ui.size.height).width(ui.size.width);
-		},
-	});
-	$(window).resize(function() {
-		$("#output").resizable( "option", "maxHeight",$(window).height()/2);
-		$("#output").resizable( "option", "maxWidth",$(window).width()-30);
-		$("#output").resizable( "option", "minWidth",$(window).width()/4);
-	});
 	for(var i in themes) {
 		$(".theme-select").append($('<li><a onclick="changeThemeTo(\''+i+'\')">'+i+'</a></li>'));
 	}
@@ -75,12 +61,14 @@ $(function() {
 		$(".theme-select").val(localStorage.style);
 		$("#theme").prop('disabled',true).prop('href',themes[$(".theme-select").val()]).prop('disabled',false);//change theme
 	}
+	/*if(!localStorage.navcolor){//change the color of navbars
+		localStorage.navcolor="vefault";
+	}else{
+		
+	}//*/
 	$(":file").css("margin","0px").parent().css("padding","0px").find(":file").addClass("ui-button").before('<div style="position:absolute; margin-bottom:0px; cursor: pointer; margin-top:0.5em" class="">Choose file (No file chosen)</div>').css({opacity:0}).change(function() {
 		$(this).prev().text("Choose file ("+($(this).val().substring($(this).val().lastIndexOf("\\")+1)||"No file chosen")+")");
 	});
-	if (!localStorage.background) {
-		localStorage.clear();
-	}
 	$("#enter").click(function() {
 		if ($("#input").val()!="") {
 			$("#input").val($("#input").val().replace(/"/g,"\\\"").replace(/\\/g,"\\"));
