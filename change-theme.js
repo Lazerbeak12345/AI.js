@@ -17,11 +17,11 @@ var themes={
 	"Superhero":"https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/superhero/bootstrap.min.css",
 	"United":"https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/united/bootstrap.min.css",
 	"Yeti":"https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/yeti/bootstrap.min.css",
-}
+};
 function changeThemeTo(theme) {
 	localStorage.style=theme;
 	$("#theme").prop('disabled',true).prop('href',themes[theme]).prop('disabled',false);//change theme
-}
+};
 $(function() {
   for(var i in themes) {
 		$(".theme-select").append($('<li><a onclick="changeThemeTo(\''+i+'\')">'+i+'</a></li>'));
