@@ -49,13 +49,17 @@
 						<li><a href="../index.html">Home</a></li>
 						<li class="active"><a href="#">Demo <span class="sr-only">(current)</span></a></li>
 						<li><a href="https://github.com/Lazerbeak12345/AI.js/">View on GitHub</a></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Change Theme <span class="caret"></span></a>
+							<ul class="dropdown-menu theme-select"></ul>
+						</li>
 					</ul>
 				</div>
 			</div>
 		</nav>
 		<div id="content" class="container-fluid">
 			<div class="row">
-				<div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-md-offset-3">
+				<div class="col-md-offset-3 col-md-offset-3 col-xs-12 col-md-6">
 					<div id="output" title="Text output will appear here">
 						<p style="text-align:center; font-size: 0.6em; color:gray">No older data found</p><!---->
 						<table style="margin:0px; width: 100%;">
@@ -66,9 +70,9 @@
 				</div>
 			</div>
 			<div class="row" id="input-box">
-				<div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-md-offset-3">
+				<div class="col-md-offset-3 col-md-offset-3 col-xs-12 col-md-6">
 					<div class="input-group">
-						<input class="form-control" style="border-radius:0" spellcheck="true" title="Input message here" id="input" placeholder="Input message here" autofocus>
+						<input type="text" class="form-control" style="border-radius:0" spellcheck="true" title="Input message here" id="input" placeholder="Input message here" autofocus>
 						<span class="input-group-btn">
 							<button style="border-radius:0" type="button" id="enter" class="btn btn-default">Enter</button>
 						</span>
@@ -101,6 +105,7 @@
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/lib/js/emojione.min.js" integrity="sha256-9cBkVeU53NiJ9/BdcJta3HbERAmf5X9DE2WvL8V+gDs=" crossorigin="anonymous"></script>
 		<script src="../AI.js"></script>
+		<script src="../change-theme.js"></script>
 		<script src="DemoJS.js"></script>
 	</body>
 </html>
