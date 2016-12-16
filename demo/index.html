@@ -31,7 +31,7 @@
 		
 		<link href="DemoCSS.css" rel="stylesheet">
 	</head>
-	<body style="padding-top:70px">
+	<body style="padding-top:70px;padding-bottom:70px">
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="container-fluid">
 				<div class="navbar-header" style="margin-right:0px;margin-left:0px">
@@ -52,18 +52,28 @@
 				</div>
 			</div>
 		</nav>
-		<div id="output" title="Text output will appear here">
-			<p style="text-align:center; font-size: 0.6em; color:gray">No older data found</p><!---->
-			<table style="margin:0px; width: 100%;">
-				<tbody>
-				</tbody>
-			</table>
-		</div>
-		<div id="input-box" class="input-group">
-			<input class="form-control" style="border-radius:0" spellcheck="true" title="Input message here" id="input" placeholder="Input message here" autofocus>
-			<span class="input-group-btn">
-				<button style="border-radius:0" type="button" id="enter" class="btn btn-default">Enter</button>
-			</span>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-xl-6 col-md-offset-3">
+					<div id="output" title="Text output will appear here">
+						<p style="text-align:center; font-size: 0.6em; color:gray">No older data found</p><!---->
+						<table style="margin:0px; width: 100%;">
+							<tbody>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-xl-6 col-md-offset-3">
+					<div id="input-box" class="input-group">
+						<input class="form-control" style="border-radius:0" spellcheck="true" title="Input message here" id="input" placeholder="Input message here" autofocus>
+						<span class="input-group-btn">
+							<button style="border-radius:0" type="button" id="enter" class="btn btn-default">Enter</button>
+						</span>
+					</div>
+				</div>
+			</div>
 		</div>
 		<noscript style="text-align:center; position:absolute; top:0px; left:0px; width:100%; height:100%; background-color:white; color:black; opacity:1; transperency:0; overflow-y:visible">
 			This webpage <a target="_top" href="https://www.google.com/search?q=websites+that+require+javascript"><em>(and most other webpages)</em></a> requires JavaScript (also known as ECMAScript).<br/>
