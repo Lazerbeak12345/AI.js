@@ -21,7 +21,7 @@ var themes={
 function changeThemeTo(theme) {
 	localStorage.style=theme;
 	$("#theme").prop('disabled',true).prop('href',themes[theme]).prop('disabled',false);//change theme
-};
+}
 $(function() {
   for(var i in themes) {
 		$(".theme-select").append($('<li><a onclick="changeThemeTo(\''+i+'\')">'+i+'</a></li>'));
