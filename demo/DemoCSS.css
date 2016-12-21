@@ -32,10 +32,6 @@
 }
 #output{
 	padding:0px;
-	background-color:white;
-	opacity: 0.8;
-	margin:0px;
-	width:100%;
 }
 #input-box{
 	position:fixed;
