@@ -30,7 +30,7 @@ $(function() {
 	if (!localStorage.style) {
 		localStorage.style="Default";
 	}else{
-		changeThemeTo(localStorage.style)
+		changeThemeTo(localStorage.style);
 	}
 	/*if(!localStorage.navcolor){//change the color of navbars
 		localStorage.navcolor="vefault";
