@@ -8,6 +8,9 @@
 	color:white;
 	float:right;
 	background-color:blue;
+	border-bottom-left-radius:.25em;
+	border-top-left-radius:.25em;
+	border-top-right-radius:.25em;
 }
 .userName{
 	padding:0 0.5em;
@@ -22,6 +25,9 @@
 	float:left;
 	background-color:gray;
 	display: inline;
+	border-top-left-radius:.25em;
+	border-top-right-radius:.25em;
+	border-bottom-left-radius:.25em;
 }
 .aiName{
 	display: inline;
@@ -32,10 +38,6 @@
 }
 #output{
 	padding:0px;
-	background-color:white;
-	opacity: 0.8;
-	margin:0px;
-	width:100%;
 }
 #input-box{
 	position:fixed;
