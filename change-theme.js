@@ -21,16 +21,16 @@ var themes={
 function changeThemeTo(theme) {
 	localStorage.style=theme;
 	$("#theme").prop('disabled',true).prop('href',themes[theme]).prop('disabled',false);//change theme
+	//$(theme+"-theme").addClass()//an idea
 }
 $(function() {
   for(var i in themes) {
-		$(".theme-select").append($('<li><a onclick="changeThemeTo(\''+i+'\')">'+i+'</a></li>'));
+		$(".theme-select").append($('<li><a class="'+i+'-theme" onclick="changeThemeTo(\''+i+'\')">'+i+'</a></li>'));
 	}
 	if (!localStorage.style) {
 		localStorage.style="Default";
 	}else{
-		$(".theme-select").val(localStorage.style);
-		$("#theme").prop('disabled',true).prop('href',themes[$(".theme-select").val()]).prop('disabled',false);//change theme
+		changeThemeTo(localStorage.style);
 	}
 	/*if(!localStorage.navcolor){//change the color of navbars
 		localStorage.navcolor="vefault";
