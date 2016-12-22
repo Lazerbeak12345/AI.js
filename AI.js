@@ -8,7 +8,7 @@
 	function randomString(len, an){//comes from http://stackoverflow.com/a/27872144
 		an = an&&an.toLowerCase();
 		var str="", i=0, min=an=="a"?10:0, max=an=="n"?10:62;
-		for(;i++<len;){
+		for(;i++<Math.ceil(len);){//the "Math.ceil(len)" part used to be just "len"
 			var r = Math.random()*(max-min)+min <<0;
 			str += String.fromCharCode(r+=r>9?r<36?55:61:48);
 		}
