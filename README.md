@@ -8,7 +8,7 @@ In fact, these robots tend to have hard-coded responces that simulate human-like
 ##Travis tests
 Master | Develop
 --- | ---
-[![Travis](https://img.shields.io/travis/Lazerbeak12345/AI.js.svg)](https://github.com/Lazerbeak12345/AI.js/tree/master) | [![Travis branch](https://img.shields.io/travis/Lazerbeak12345/AI.js/develop.svg)](https://github.com/Lazerbeak12345/AI.js/tree/develop)
+[![Travis](https://travis-ci.org/Lazerbeak12345/AI.js.svg?branch=master)](https://travis-ci.org/Lazerbeak12345/AI.js) | [![Travis branch](https://travis-ci.org/Lazerbeak12345/AI.js.svg?branch=develop)](https://travis-ci.org/Lazerbeak12345/AI.js)
 
 ##Circle ci tests
 Master | Develop
