@@ -155,7 +155,8 @@
 					}
 				}
 			}
-			//act
+			//act & remember
+			this.lastResponce=output;
 			return output;
 		};
 		this.punish=function(str){
