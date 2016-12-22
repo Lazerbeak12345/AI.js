@@ -4,7 +4,7 @@ var bot=new Ai("Andy");
 module.exports = function(grunt) {
 	grunt.initConfig({
 		jshint: {
-			all: ['Gruntfile.js', 'AI.js', 'strongEval.js']
+			all: ['*.js']
 		},
 		bootlint: {
 			options: {
