@@ -27,7 +27,7 @@
 	display: inline;
 	border-top-left-radius:.25em;
 	border-top-right-radius:.25em;
-	border-bottom-left-radius:.25em;
+	border-bottom-right-radius:.25em;
 }
 .aiName{
 	display: inline;
