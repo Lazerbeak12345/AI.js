@@ -119,7 +119,7 @@
 				var myAi= new Ai("My AI's name");
 				var aisOutput=myAi.reactTo("input","usersname","type of input(optional but will use the typeof operator to determine this value if not specified)");
 			*/
-			var output="",len,index,word;//set varubles
+			var output=randomString(Math.random()*this.lastResponce.length),len,index,word;//set varubles
 			type=type||typeof input;
 
 			//check varubles
@@ -159,11 +159,11 @@
 			return output;
 		};
 		this.punish=function(str){
-			if (typeof str=="undefined") {
+			if (typeof str==="undefined") {
 				str=this.lastResponce;
 			}
 			for (var len=1; len<str.length; len++) {
-				if (!this.words[len]) this.words[len]={};
+				if (typeof this.words[len]==="undefined") this.words[len]={};
 				for (var index=0; index<(str.length-len); index++) {
 					var word=str.substr(index,len);
 					if(!this.words[len][word]) {
@@ -175,11 +175,11 @@
 			}
 		};
 		this.reward=function(str){
-			if (typeof str=="undefined") {
+			if (typeof str==="undefined") {
 				str=this.lastResponce;
 			}
 			for (var len=1; len<str.length; len++) {
-				if (!this.words[len]) this.words[len]={};
+				if (typeof this.words[len]==="undefined") this.words[len]={};
 				for (var index=0; index<(str.length-len); index++) {
 					var word=str.substr(index,len);
 					if(!this.words[len][word]) {
