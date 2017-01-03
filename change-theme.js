@@ -23,9 +23,6 @@ function changeThemeTo(theme) {
 	$("#theme").prop('disabled',true).prop('href',themes[theme]).prop('disabled',false);//change theme
 	//$(theme+"-theme").addClass()//an idea
 }
-for(var i in themes) {
-	$(".theme-select").append($('<li><a class="'+i+'-theme" onclick="changeThemeTo(\''+i+'\')">'+i+'</a></li>'));
-}
 if (!localStorage.style) {
 	localStorage.style="Default";
 }else{
@@ -36,3 +33,8 @@ if (!localStorage.style) {
 }else{
 
 }//*/
+$(function() {
+	for(var i in themes) {
+		$(".theme-select").append($('<li><a class="'+i+'-theme" onclick="changeThemeTo(\''+i+'\')">'+i+'</a></li>'));
+	}
+});
