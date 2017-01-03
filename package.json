@@ -1,6 +1,11 @@
 {
-	"name": "AI.js",
-	"version": "0.0.2",
+	"name":"AI.js",
+	"version":"0.0.2",
+	"license":"MIT",
+	"repository":{
+		"type":"git",
+		"url":"https://github.com/Lazerbeak12345/AI.js.git"
+	},
 	"devDependencies": {
 		"grunt": "1.0.1",
 		"grunt-cli": "1.2.0",
