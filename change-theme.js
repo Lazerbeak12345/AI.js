@@ -37,4 +37,5 @@ $(function() {
 	for(var i in themes) {
 		$(".theme-select").append($('<li><a class="'+i+'-theme" onclick="changeThemeTo(\''+i+'\')">'+i+'</a></li>'));
 	}
+	changeThemeTo(localStorage.style);//Just in case...
 });
