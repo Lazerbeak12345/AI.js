@@ -44,3 +44,9 @@
 	bottom:0px;
 	left:0px;
 }
+@media all and (max-width:993px){
+	#input,
+	#enter{
+		border-radius:0;
+	}
+}
